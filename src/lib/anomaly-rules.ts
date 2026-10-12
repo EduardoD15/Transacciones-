@@ -1,0 +1,1 @@
+export const ANOMALY_MAX_SPAN_SECONDS = 3;

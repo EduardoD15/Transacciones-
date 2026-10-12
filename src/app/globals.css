@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #020817;
+  --foreground: #f8fafc;
 }
 
 @theme inline {
@@ -12,15 +12,33 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #020817;
 }
 
 body {
-  background: var(--background);
+  margin: 0;
+  background: radial-gradient(circle at top, #0f172a 0%, #020817 55%);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+input,
+select,
+button {
+  font: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 999px;
 }
