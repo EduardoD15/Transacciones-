@@ -504,34 +504,24 @@ export function Dashboard() {
     [anomalies, dashboardPeriod],
   );
 
-  const duplicateTransactionInfo = useMemo(() => {
-    const relatedTypesByTransaction = new Map<string, Set<AnomalyType>>();
-    const triggeringDuplicateIds = new Set<string>();
+  const anomalousTransactionIds = useMemo(() => {
+    const ids = new Set<string>();
     scopedAnomalies.forEach((anomaly) => {
-      if (anomaly.type === "DUPLICATE_ID") {
-        triggeringDuplicateIds.add(anomaly.triggerId);
-      }
       anomaly.transactions.forEach((transaction) => {
-        const types = relatedTypesByTransaction.get(transaction.id) ?? new Set<AnomalyType>();
-        types.add(anomaly.type);
-        relatedTypesByTransaction.set(transaction.id, types);
+        ids.add(transaction.id);
       });
     });
-    return { relatedTypesByTransaction, triggeringDuplicateIds };
+    return ids;
   }, [scopedAnomalies]);
 
   const filteredTransactions = useMemo(
     () =>
       scopedTransactions.filter(
         (transaction) =>
-          !duplicateTransactionInfo.triggeringDuplicateIds.has(transaction.id) &&
-          (!tableFilters.anomalyType ||
-            duplicateTransactionInfo.relatedTypesByTransaction
-              .get(transaction.id)
-              ?.has(tableFilters.anomalyType)) &&
+          !anomalousTransactionIds.has(transaction.id) &&
           transactionMatches(transaction, tableFilters),
       ),
-    [scopedTransactions, tableFilters, duplicateTransactionInfo],
+    [scopedTransactions, tableFilters, anomalousTransactionIds],
   );
 
   const hasOtherTableFilters = Boolean(
@@ -1217,13 +1207,6 @@ export function Dashboard() {
                         <span className="whitespace-nowrap rounded-full bg-emerald-500/15 px-2.5 py-1 text-xs text-emerald-300">
                           NORMAL
                         </span>
-                        {duplicateTransactionInfo.relatedTypesByTransaction
-                          .get(transaction.id)
-                          ?.has("DUPLICATE_ID") ? (
-                          <span className="whitespace-nowrap rounded-full bg-orange-500/15 px-2.5 py-1 text-xs text-orange-200">
-                            DUPLICATE_ID
-                          </span>
-                        ) : null}
                       </div>
                     </td>
                   </tr>

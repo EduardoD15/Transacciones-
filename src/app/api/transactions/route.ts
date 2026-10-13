@@ -17,6 +17,8 @@ const transactionSchema = z.object({
   ip: z.string().nullable().optional(),
 });
 
+const transactionBatchSchema = z.array(transactionSchema).min(1);
+
 function errorResponse(error: unknown) {
   const message = error instanceof Error ? error.message : "Error inesperado.";
   logger("API transactions error", { message });
@@ -42,11 +44,56 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "El cuerpo debe ser JSON válido." }, { status: 400 });
   }
 
-  const parsedBody = transactionSchema.safeParse(body);
+  const isBatch = Array.isArray(body);
+  const parsedBody = z.union([transactionSchema, transactionBatchSchema]).safeParse(body);
   if (!parsedBody.success) {
+    const details = isBatch ? parsedBody.error.issues : parsedBody.error.flatten();
     return NextResponse.json(
-      { error: "La solicitud no tiene los campos requeridos.", details: parsedBody.error.flatten() },
+      { error: "La solicitud no tiene los campos requeridos.", details },
       { status: 400 },
+    );
+  }
+
+  if (Array.isArray(parsedBody.data)) {
+    const results = [];
+    for (let index = 0; index < parsedBody.data.length; index += 1) {
+      try {
+        const result = await registerTransaction(parsedBody.data[index]);
+        results.push(result);
+        logger("POST /api/transactions batch item processed", {
+          index,
+          transactionId: result.transaction.id,
+          hashValid: result.hashValid,
+          duplicateId: result.duplicateId,
+          anomalyCount: result.anomalies.length,
+        });
+      } catch (error) {
+        const message = error instanceof Error ? error.message : "Error inesperado.";
+        logger("POST /api/transactions batch failed", {
+          index,
+          processedCount: results.length,
+          message,
+        });
+        const status = /configur|falta configurar/i.test(message) ? 503 : 500;
+        return NextResponse.json(
+          {
+            error: message,
+            failedIndex: index,
+            processedCount: results.length,
+            results,
+          },
+          { status },
+        );
+      }
+    }
+
+    return NextResponse.json(
+      {
+        message: "Todas las transacciones del lote fueron registradas y evaluadas.",
+        total: results.length,
+        results,
+      },
+      { status: 201 },
     );
   }
 

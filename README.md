@@ -112,6 +112,83 @@ Pulsa **Send** tres veces, cambiando solo el `idTxn` y `date` en el body; conser
 
 Para cada envío, copia los valores de esa fila en `idTxn` y `date` del body y pulsa **Send**. El script genera el hash válido automáticamente usando el body actual. En la tercera respuesta espera `hashValid: true` y una anomalía `POTENTIAL_FRAUD`: son las 3 transacciones de ese usuario en una ventana de noche que abarca 2 segundos. No envíes usuarios distintos para esta prueba. Para repetirla, usa un usuario y IDs nuevos porque las transacciones ya enviadas quedan guardadas.
 
+#### Enviar varias transacciones en un solo POST
+
+La ruta también acepta un arreglo JSON y registra sus elementos secuencialmente. Para enviar un arreglo, reemplaza el Pre-request Script individual por este script de lote. Calcula un HMAC por transacción antes de enviar el arreglo completo:
+
+```javascript
+const transactions = JSON.parse(pm.request.body.raw);
+if (!Array.isArray(transactions) || transactions.length === 0) {
+  throw new Error("El body debe ser un arreglo JSON con al menos una transacción.");
+}
+
+const secret = pm.environment.get("TRANSACTION_SECRET");
+if (!secret) {
+  throw new Error("Agrega TRANSACTION_SECRET al Environment de Postman.");
+}
+
+const transactionsWithHashes = transactions.map((body, index) => {
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    throw new Error(`El elemento ${index + 1} debe ser un objeto de transacción.`);
+  }
+
+  const rawDate = String(body.date).trim();
+  const dateWithZone = /(?:Z|[+-]\d{2}:\d{2})$/i.test(rawDate)
+    ? rawDate
+    : `${rawDate}-05:00`;
+  const parsedDate = new Date(dateWithZone);
+  if (Number.isNaN(parsedDate.getTime())) {
+    throw new Error(`La fecha del elemento ${index + 1} no es válida.`);
+  }
+
+  const transaction = {
+    idTxn: String(body.idTxn).trim(),
+    user: String(body.user).trim().toLowerCase(),
+    date: parsedDate.toISOString(),
+    value: Number(body.value),
+    paymentMethod: String(body.paymentMethod).trim()
+  };
+  const hash = CryptoJS.HmacSHA256(
+    JSON.stringify(transaction),
+    secret
+  ).toString(CryptoJS.enc.Hex);
+
+  return { ...body, hash };
+});
+
+const headers = { "Content-Type": "application/json" };
+pm.request.headers.each((header) => {
+  if (!header.disabled && header.key.toLowerCase() !== "content-type") {
+    headers[header.key] = pm.variables.replaceIn(header.value);
+  }
+});
+
+const url = pm.variables.replaceIn(pm.request.url.toString());
+pm.execution.skipRequest();
+pm.sendRequest(
+  {
+    url,
+    method: "POST",
+    header: headers,
+    body: {
+      mode: "raw",
+      raw: JSON.stringify(transactionsWithHashes)
+    }
+  },
+  (error, response) => {
+    if (error) {
+      console.error("Falló el POST batch:", error);
+      return;
+    }
+    console.log(`Respuesta batch — HTTP ${response.code}:`, response.text());
+  }
+);
+```
+
+En **Body → raw → JSON**, pega un arreglo; puedes omitir `hash` o dejar `"hash": "{{hash}}"`, pues el script lo reemplaza por un HMAC propio para cada elemento. Pulsa **Send una sola vez**: el script omite el envío automático de Postman y realiza el POST batch con los hashes calculados. Consulta el resultado en **View → Show Postman Console**; una respuesta exitosa contiene `total` y un `results` por cada transacción. Verifica que cada `results[n].hashValid` sea `true`. Los elementos se procesan en orden; si ocurre un error de servidor a mitad del lote, la respuesta indica `failedIndex` y `processedCount`, pues los resultados anteriores ya podrían haberse guardado.
+
+Si un resultado tiene `hashValid: false` y una anomalía `INVALID_HASH` con `count: 1`, el problema es el HMAC de ese elemento; no es el detector de ventana. Revisa que `TRANSACTION_SECRET` de Postman y del servidor coincidan. Una alerta `POTENTIAL_FRAUD` debe mostrar en `count` el tamaño de la ventana evaluada y sus transacciones vinculadas en `results[n].anomalies`.
+
 Para probar las demás franjas, usa el mismo body y script, un correo nuevo y el número de envíos que corresponda:
 
 | Franja | Hora del `date` | Cantidad de POST |
@@ -150,11 +227,11 @@ La anomalía de ventana incluye las transacciones de la ventana y el ID de la tr
 
 ## 5. Filtro global y métricas
 
-El filtro global permite **un día**, **rango de días** (incluye ambas fechas), **una semana** (de lunes a domingo según la fecha elegida), **un mes**, **un año** o **General**. Usa los selectores de calendario para días/semanas/meses y escribe el año cuando elijas año. Este filtro aplica al dashboard completo: indicadores, tendencias, gráficos y ambas tablas. Los campos compartidos debajo de los gráficos refinan a la vez las tablas de anomalías y transacciones y nunca amplían el período global seleccionado. Incluyen un filtro de tipo (`DUPLICATE_ID`, `POTENTIAL_FRAUD` o `INVALID_HASH`) que filtra las dos tablas; en Transacciones muestra los registros relacionados con ese tipo, manteniendo fuera el registro disparador de duplicados. Los indicadores no cambian al refinar los filtros de tabla. Las tarjetas Hoy / Esta semana / Este mes / Este año / General son un resumen de referencia y no cambian la selección global.
+El filtro global permite **un día**, **rango de días** (incluye ambas fechas), **una semana** (de lunes a domingo según la fecha elegida), **un mes**, **un año** o **General**. Usa los selectores de calendario para días/semanas/meses y escribe el año cuando elijas año. Este filtro aplica al dashboard completo: indicadores, tendencias, gráficos y ambas tablas. Los filtros compartidos debajo de los gráficos limitan los resultados de ambas tablas y nunca amplían el período global seleccionado. El filtro de tipo (`DUPLICATE_ID`, `POTENTIAL_FRAUD` o `INVALID_HASH`) filtra la tabla Anomalías; la tabla Transacciones solo muestra registros sin ninguna anomalía y conserva los demás filtros compartidos. Los indicadores no cambian al refinar los filtros de tabla. Las tarjetas Hoy / Esta semana / Este mes / Este año / General son un resumen de referencia y no cambian la selección global.
 
 El dashboard presenta totales por período, transacciones implicadas en anomalías, tasa sospechosa, usuarios afectados y recurrentes, total monetario sospechoso, promedio por usuario, nuevas/abiertas/revisadas/descartadas, casos recurrentes, anomalías por nivel, métodos de pago, distribución de anomalías por hora y evolución diaria con picos. Al expandir una anomalía, el detalle se abre en una fila secundaria debajo de la fila correspondiente, ocupa todo el ancho de la tabla y queda visualmente vinculado a ella; muestra las transacciones ordenadas cronológicamente, la duración observada, la ventana aplicada y el registro disparador resaltado. En «Tipo / nivel» se listan los distintos tipos y niveles relacionados con las transacciones involucradas. Las dos tablas usan paginación independiente de 5 filas por página; los filtros y el período global limitan los resultados paginados. El botón «Limpiar filtros y período» limpia los filtros de las tablas y restablece el período global a General.
 
-Los tipos de anomalía (`POTENTIAL_FRAUD`, `DUPLICATE_ID` e `INVALID_HASH`) se muestran en la tabla **Anomalías**. Si un `idTxn` está duplicado, el POST que dispara esa alerta se muestra en **Anomalías** y queda disponible en su detalle desplegable; se excluye de la tabla **Transacciones**. El registro original permanece en **Transacciones** con los estados `NORMAL` y `DUPLICATE_ID`. Los demás registros de transacciones mantienen `NORMAL`; el resultado del hash se muestra por separado y los hashes inválidos también generan su anomalía correspondiente.
+Los tipos de anomalía (`POTENTIAL_FRAUD`, `DUPLICATE_ID` e `INVALID_HASH`) se muestran en la tabla **Anomalías** y sus transacciones quedan disponibles en el detalle desplegable. La tabla **Transacciones** solo presenta registros cuyo estado es `NORMAL` y que no están relacionados con ninguna anomalía; por ello no muestra ni el registro que dispara un duplicado ni otros registros relacionados con fraude potencial o hash inválido. El resultado de validación del hash se muestra por separado en las transacciones normales.
 
 ## 6. Acceso público de la API
 
