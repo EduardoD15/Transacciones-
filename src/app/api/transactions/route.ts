@@ -1,10 +1,13 @@
+// validaciones de la API de transacciones, tanto para GET como para POST
+// mas validaciones en colombian-date.ts y window-rules.ts y en security.ts(creacion de hash)
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
 import { logger } from "@/lib/logger";
 import { listTransactions, registerTransaction } from "@/lib/transaction-service";
-import { isColombiaDateTime } from "@/lib/colombia-date";
+import { isColombiaDateTime } from "@/lib/colombia-date";//validaciones
 
+// Zod para validar estructura y tipos de datos
 const transactionSchema = z.object({
   idTxn: z.union([z.string(), z.number()]).refine((value) => String(value).trim().length > 0),
   user: z.string().trim().min(1),
@@ -14,11 +17,13 @@ const transactionSchema = z.object({
   value: z.number().finite(),
   paymentMethod: z.string(),
   hash: z.string().optional().default(""),
+
   ip: z.string().nullable().optional(),
 });
 
-const transactionBatchSchema = z.array(transactionSchema).min(1);
+const transactionBatchSchema = z.array(transactionSchema).min(1);//por si es un arreglo
 
+// Manejar errores y responder con un mensaje adecuado, con ayuda del logger
 function errorResponse(error: unknown) {
   const message = error instanceof Error ? error.message : "Error inesperado.";
   logger("API transactions error", { message });
@@ -44,7 +49,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "El cuerpo debe ser JSON válido." }, { status: 400 });
   }
 
-  const isBatch = Array.isArray(body);
+  const isBatch = Array.isArray(body);//si recibio un arreglo
   const parsedBody = z.union([transactionSchema, transactionBatchSchema]).safeParse(body);
   if (!parsedBody.success) {
     const details = isBatch ? parsedBody.error.issues : parsedBody.error.flatten();
@@ -53,7 +58,7 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   }
-
+  //varias transaciones 
   if (Array.isArray(parsedBody.data)) {
     const results = [];
     for (let index = 0; index < parsedBody.data.length; index += 1) {
@@ -97,6 +102,7 @@ export async function POST(request: Request) {
     );
   }
 
+  //si es una sola transacción
   try {
     const result = await registerTransaction(parsedBody.data);
     logger("POST /api/transactions processed", {

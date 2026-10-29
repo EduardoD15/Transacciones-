@@ -5,6 +5,7 @@ import { toColombiaISOString } from "@/lib/colombia-date";
 import { getWindowRule } from "@/lib/window-rules";
 import type {
   AnomalyRecord,
+  AnomalyStatus,
   AnomalyType,
   TransactionInput,
   TransactionRecord,
@@ -109,7 +110,7 @@ async function createAnomaly(input: {
   failOnDatabaseError(linksError);
 
   return {
-    id: anomaly.id,
+    id: String(anomaly.id),
     user: input.email,
     level: input.level,
     type: input.type,
@@ -206,7 +207,7 @@ export async function listAnomalies(): Promise<AnomalyRecord[]> {
       .sort((left, right) => new Date(left.date).getTime() - new Date(right.date).getTime());
 
     return {
-      id: row.id,
+      id: String(row.id),
       user: row.usuario_email,
       level: row.nivel,
       type: row.tipo,
@@ -220,6 +221,24 @@ export async function listAnomalies(): Promise<AnomalyRecord[]> {
       createdAt: row.fecha_creacion,
     } satisfies AnomalyRecord;
   });
+}
+
+export async function updateAnomalyStatus(
+  anomalyId: string,
+  status: AnomalyStatus,
+): Promise<{ id: string; status: AnomalyStatus } | null> {
+  const supabase = getSupabaseAdmin();
+  const { data, error } = await supabase
+    .from("anomalias")
+    .update({ estado: status })
+    .eq("id", anomalyId)
+    .select("id, estado")
+    .maybeSingle();
+
+  failOnDatabaseError(error);
+  if (!data) return null;
+
+  return { id: String(data.id), status };
 }
 
 export async function registerTransaction(input: TransactionInput) {

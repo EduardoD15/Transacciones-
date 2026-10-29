@@ -222,8 +222,11 @@ Solo los errores de transporte/formato (por ejemplo, JSON mal formado o campos r
 - `POST /api/transactions`: guarda la transacción, valida el HMAC, busca ID duplicado y evalúa la ventana temporal.
 - `GET /api/transactions`: lista las transacciones guardadas.
 - `GET /api/anomalies`: lista las anomalías y las transacciones asociadas a cada una.
+- `PATCH /api/anomalies`: actualiza el estado de una anomalía existente. Envía JSON con `id` y `status`, donde `status` puede ser `abierta`, `revisada` o `descartada`. El dashboard permite cambiarlo desde el selector de estado de cada anomalía.
 
 La anomalía de ventana incluye las transacciones de la ventana y el ID de la transacción disparadora. El ID repetido se compara globalmente y no es una restricción única en la base de datos, por lo que se pueden guardar todos los intentos.
+
+La ruta PATCH, al igual que las demás rutas actuales, no requiere sesión ni token. No la expongas públicamente sin añadir autenticación y autorización si solo personal autorizado debe cambiar los estados.
 
 ## 5. Filtro global y métricas
 

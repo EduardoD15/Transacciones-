@@ -3,7 +3,7 @@
 import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 
 import { ANOMALY_MAX_SPAN_SECONDS } from "@/lib/anomaly-rules";
-import type { AnomalyRecord, AnomalyType, TransactionRecord } from "@/lib/types";
+import type { AnomalyRecord, AnomalyStatus, AnomalyType, TransactionRecord } from "@/lib/types";
 
 type Filters = {
   user: string;
@@ -442,7 +442,44 @@ export function Dashboard() {
   });
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState("");
+  const [statusUpdateError, setStatusUpdateError] = useState("");
+  const [updatingAnomalies, setUpdatingAnomalies] = useState<Set<string>>(
+    () => new Set(),
+  );
   const [currentTime, setCurrentTime] = useState(0);
+
+  const updateAnomalyStatus = useCallback(async (id: string, status: AnomalyStatus) => {
+    setStatusUpdateError("");
+    setUpdatingAnomalies((current) => new Set(current).add(id));
+
+    try {
+      const response = await fetch("/api/anomalies", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, status }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error ?? "No fue posible actualizar el estado.");
+      }
+
+      setAnomalies((current) =>
+        current.map((anomaly) =>
+          anomaly.id === id ? { ...anomaly, status } : anomaly,
+        ),
+      );
+    } catch (error) {
+      setStatusUpdateError(
+        error instanceof Error ? error.message : "Error al actualizar el estado.",
+      );
+    } finally {
+      setUpdatingAnomalies((current) => {
+        const next = new Set(current);
+        next.delete(id);
+        return next;
+      });
+    }
+  }, []);
 
   const refresh = useCallback(async () => {
     setLoading(true);
@@ -1056,6 +1093,11 @@ export function Dashboard() {
             <h2 className="text-xl font-semibold text-white">Anomalías</h2>
             <p className="text-sm text-slate-400">{filteredAnomalies.length} resultado(s)</p>
           </div>
+          {statusUpdateError ? (
+            <p className="mb-3 rounded-lg border border-rose-800 bg-rose-950/50 p-3 text-sm text-rose-200" role="alert">
+              {statusUpdateError}
+            </p>
+          ) : null}
           <div className="mt-5 overflow-x-auto">
             <table className="w-full min-w-[1000px] text-left text-sm">
               <thead className="border-b border-slate-700 text-xs uppercase text-slate-400">
@@ -1068,6 +1110,7 @@ export function Dashboard() {
                   <th className="p-3">Ventana elegida</th>
                   <th className="p-3">Valor relacionado</th>
                   <th className="p-3">Fecha</th>
+                  <th className="p-3">Estado</th>
                   <th className="p-3">Transacciones involucradas</th>
                 </tr>
               </thead>
@@ -1119,6 +1162,31 @@ export function Dashboard() {
                     <td className="p-3">{money(anomaly.value)}</td>
                     <td className="p-3 whitespace-nowrap text-slate-300">{dateTime(anomaly.createdAt)}</td>
                     <td className="p-3">
+                      <select
+                        aria-label={`Estado de anomalía ${anomaly.id}`}
+                        className="rounded-md border border-slate-700 bg-slate-950 px-2 py-1 text-xs text-slate-200 disabled:opacity-60"
+                        disabled={updatingAnomalies.has(anomaly.id)}
+                        onChange={(event) => {
+                          const status = event.target.value;
+                          if (
+                            status === "abierta" ||
+                            status === "revisada" ||
+                            status === "descartada"
+                          ) {
+                            void updateAnomalyStatus(anomaly.id, status);
+                          }
+                        }}
+                        value={anomaly.status}
+                      >
+                        <option value="abierta">Abierta</option>
+                        <option value="revisada">Revisada</option>
+                        <option value="descartada">Descartada</option>
+                      </select>
+                      {updatingAnomalies.has(anomaly.id) ? (
+                        <span className="ml-2 text-xs text-slate-400">Guardando…</span>
+                      ) : null}
+                    </td>
+                    <td className="p-3">
                       <button
                         aria-controls={`anomaly-details-${anomaly.id}`}
                         aria-expanded={expandedAnomalies.has(anomaly.id)}
@@ -1141,7 +1209,7 @@ export function Dashboard() {
                   </tr>
                   {expandedAnomalies.has(anomaly.id) ? (
                     <tr className="border-b-2 border-cyan-900 bg-slate-950/50">
-                      <td className="p-3" colSpan={9}>
+                      <td className="p-3" colSpan={10}>
                         <div
                           className="ml-3 border-l-2 border-cyan-500 pl-4"
                           id={`anomaly-details-${anomaly.id}`}
@@ -1157,7 +1225,7 @@ export function Dashboard() {
                   </Fragment>
                 ))}
                 {!loading && filteredAnomalies.length === 0 ? (
-                  <tr><td className="p-6 text-center text-slate-500" colSpan={9}>No hay anomalías que coincidan con los filtros.</td></tr>
+                  <tr><td className="p-6 text-center text-slate-500" colSpan={10}>No hay anomalías que coincidan con los filtros.</td></tr>
                 ) : null}
               </tbody>
             </table>

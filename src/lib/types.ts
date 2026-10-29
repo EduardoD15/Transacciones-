@@ -13,6 +13,8 @@ export type AnomalyType =
   | "INVALID_HASH"
   | "DUPLICATE_ID";
 
+export type AnomalyStatus = "abierta" | "revisada" | "descartada";
+
 export interface TransactionInput {
   idTxn: number | string;
   user: string;
@@ -37,7 +39,7 @@ export interface AnomalyRecord {
   level: "LOW" | "MEDIUM" | "HIGH";
   type: AnomalyType;
   reason: string;
-  status: string;
+  status: AnomalyStatus;
   windowTransactions: number;
   count: number;
   value: number;

@@ -1,10 +1,11 @@
+//validaciones de la ventana de tiempo
 import { colombiaClock } from "@/lib/colombia-date";
 
 export type WindowPeriod = "morning" | "afternoon" | "night";
 
 export interface WindowRule {
-  period: WindowPeriod;
-  transactions: number;
+  period: WindowPeriod;//mañana, tarde-noche, noche-madrugada
+  transactions: number;//cantidad de transacciones permitidas en el periodo
   label: string;
 }
 
@@ -14,15 +15,15 @@ function readPositiveInteger(name: string, legacyName: string, fallback: number)
     throw new Error(`${name} debe ser un entero positivo.`);
   }
   return value;
-}
+}//lee la variable de entorno y valida que sea un entero positivo, si no lo es lanza un error
 
 export function getWindowRule(dateTime: string): WindowRule {
   if (Number.isNaN(new Date(dateTime).getTime())) {
     throw new Error("La fecha debe ser ISO 8601 e incluir una hora válida.");
-  }
+  } //valida que la fecha sea válida
 
   const { hour, minute, second } = colombiaClock(dateTime);
-  const timeOfDay = hour * 3600 + minute * 60 + second;
+  const timeOfDay = hour * 3600 + minute * 60 + second;//convierte la hora a segundos desde la medianoche
   const morningWindow = readPositiveInteger(
     "WINDOW_MORNING_TRANSACTIONS",
     "WINDOW_MORNING_SECONDS",

@@ -1,3 +1,4 @@
+//construye hash y lo verifica, comparacion
 import crypto from "node:crypto";
 
 import { toColombiaISOString } from "@/lib/colombia-date";
@@ -19,9 +20,9 @@ export function buildTransactionHash(transaction: TransactionInput): string {
   }
 
   return crypto
-    .createHmac("sha256", secret)
-    .update(JSON.stringify(payload), "utf8")
-    .digest("hex");
+    .createHmac("sha256", secret)//crea el objeto
+    .update(JSON.stringify(payload), "utf8")//con el body de la transacción lo convierte en texto
+    .digest("hex");//nos da el resuldado final del hash
 }
 
 export function verifyTransactionHash(transaction: TransactionInput): boolean {
@@ -32,11 +33,11 @@ export function verifyTransactionHash(transaction: TransactionInput): boolean {
   const providedHash = String(transaction.hash ?? "").trim().toLowerCase();
   if (!/^[a-f0-9]{64}$/.test(providedHash)) {
     return false;
-  }
+  }//el hash que nos da el cliente o desde otra parte , se convierte en minisculas
 
   const expectedHash = buildTransactionHash(transaction);
-  const expectedBuffer = Buffer.from(expectedHash, "hex");
-  const providedBuffer = Buffer.from(providedHash, "hex");
+  const expectedBuffer = Buffer.from(expectedHash, "hex");//servidor
+  const providedBuffer = Buffer.from(providedHash, "hex");//cliente
 
-  return crypto.timingSafeEqual(expectedBuffer, providedBuffer);
+  return crypto.timingSafeEqual(expectedBuffer, providedBuffer);//comparacion de hash por medio de bytes
 }
