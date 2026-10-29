@@ -31,7 +31,7 @@ function failOnDatabaseError(error: { message: string } | null) {
   if (error) {
     throw new Error(`Error de Supabase: ${error.message}`);
   }
-}
+}// si hay un error lanza un error con el mensaje de supabase
 
 function mapTransaction(row: DatabaseTransaction): TransactionRecord {
   return {
@@ -50,9 +50,11 @@ function mapTransaction(row: DatabaseTransaction): TransactionRecord {
   };
 }
 
+//normaliza los datos de entrada, convierte a string...
 function normalizeInput(input: TransactionInput): TransactionInput & { windowTransactions: number } {
   const date = toColombiaISOString(input.date);
-  const windowTransactions = getWindowRule(date).transactions;
+  const windowTransactions = getWindowRule(date).transactions;//obtiene la cantidad de transacciones permitidas en el periodo de tiempo
+
   return {
     idTxn: String(input.idTxn).trim(),
     user: input.user.trim().toLowerCase(),
@@ -65,6 +67,8 @@ function normalizeInput(input: TransactionInput): TransactionInput & { windowTra
   };
 }
 
+//crea la anomalia y la guarda en la base de datos, 
+// ademas de crear los enlaces con las transacciones
 async function createAnomaly(input: {
   userId: number;
   email: string;
@@ -125,6 +129,8 @@ async function createAnomaly(input: {
   } satisfies AnomalyRecord;
 }
 
+//funcion para encontrar la ventana de transacciones que contiene 
+//la transaccion actual
 function findWindowContainingCurrent(
   transactions: TransactionRecord[],
   currentTransactionId: string,
@@ -136,30 +142,33 @@ function findWindowContainingCurrent(
     new Date(transaction[timestampField]).getTime();
   const sortedTransactions = [...transactions].sort(
     (left, right) => timestamp(left) - timestamp(right),
-  );
+  );//ordena las transacciones por ordencronologico
   const triggerIndex = sortedTransactions.findIndex(
     (transaction) => transaction.id === currentTransactionId,
-  );
+  );//ubica el indice de la transaccion actual en el arreglo 
 
   if (triggerIndex < 0) return null;
 
   const maxSpanMilliseconds = maxSpanSeconds * 1000;
-  let bestWindow: TransactionRecord[] | null = null;
-  const firstPossibleStart = Math.max(0, triggerIndex - windowTransactions + 1);
+  let bestWindow: TransactionRecord[] | null = null;//la mejor ventana encontrada hasta ahora
+  const firstPossibleStart = Math.max(0, triggerIndex - windowTransactions + 1);//el primer indice posible para la ventana de transacciones
 
-  for (let startIndex = firstPossibleStart; startIndex <= triggerIndex; startIndex += 1) {
-    const endIndex = startIndex + windowTransactions - 1;
-    if (endIndex >= sortedTransactions.length) continue;
+  //itera desde el primer indice posible hasta el indice de la transaccion actual
+  for (let startIndex = firstPossibleStart; startIndex <= triggerIndex; startIndex += 1){
+    const endIndex = startIndex + windowTransactions - 1;//el indice final de la ventana de transacciones
+    if (endIndex >= sortedTransactions.length) continue;//si el indice final es mayor que la longitud del arreglo, continua con la siguiente iteracion
 
     const startTimestamp = timestamp(sortedTransactions[startIndex]);
     const endTimestamp = timestamp(sortedTransactions[endIndex]);
     if (endTimestamp - startTimestamp > maxSpanMilliseconds) continue;
+    //si la diferencia entre el tiempo de la transaccion final y la inicial es mayor que el maximo permitido, continua con la siguiente iteracion
 
     const candidate = sortedTransactions.slice(startIndex, endIndex + 1);
+    //la ventana de transacciones candidata
     if (!bestWindow || endTimestamp - startTimestamp <
       timestamp(bestWindow[bestWindow.length - 1]) - timestamp(bestWindow[0])) {
       bestWindow = candidate;
-    }
+    }//si no hay una mejor ventana o la ventana candidata es mejor que la mejor encontrada hasta ahora, actualiza la mejor ventana
   }
 
   return bestWindow;
@@ -175,7 +184,7 @@ export async function listTransactions(): Promise<TransactionRecord[]> {
 
   failOnDatabaseError(error);
   return (data ?? []).map((row) => mapTransaction(row as DatabaseTransaction));
-}
+}//listar todas las transacciones, ordenadas por fecha de transaccion descendente, con un limite de 2000
 
 export async function listAnomalies(): Promise<AnomalyRecord[]> {
   const supabase = getSupabaseAdmin();
@@ -221,7 +230,7 @@ export async function listAnomalies(): Promise<AnomalyRecord[]> {
       createdAt: row.fecha_creacion,
     } satisfies AnomalyRecord;
   });
-}
+}//listar todas las anomalias, ordenadas por fecha de creacion descendente, con un limite de 2000
 
 export async function updateAnomalyStatus(
   anomalyId: string,
@@ -239,8 +248,10 @@ export async function updateAnomalyStatus(
   if (!data) return null;
 
   return { id: String(data.id), status };
-}
+}//actualiza el estado de una anomalia, devuelve el id y el estado actualizado, o null si no se encontro la anomalia
 
+
+//registrar transaccion, valida el hash, verifica si es duplicada, crea anomalias si es necesario
 export async function registerTransaction(input: TransactionInput) {
   const transaction = normalizeInput(input);
   const hashValid = verifyTransactionHash(transaction);
@@ -395,4 +406,4 @@ export async function registerTransaction(input: TransactionInput) {
     duplicateId,
     anomalies,
   };
-}
+}//registrar transaccion, valida el hash, verifica si es duplicada, crea anomalias si es necesario
