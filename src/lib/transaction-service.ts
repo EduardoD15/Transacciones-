@@ -39,10 +39,8 @@ async function runLoggedStep<T>(
   operation: () => T,
 ): Promise<Awaited<T>> {
   const metadata = { ...context, step };
-  logger("POST /api/transactions step started", metadata);
   try {
     const result = await operation();
-    logger("POST /api/transactions step completed", metadata);
     return result;
   } catch (error) {
     logger("POST /api/transactions step failed", {
@@ -67,12 +65,6 @@ function failOnDatabaseError(
       });
     }
     throw new Error(`Error de Supabase: ${error.message}`);
-  }
-  if (logContext) {
-    logger("POST /api/transactions database operation succeeded", {
-      ...logContext,
-      step,
-    });
   }
 }// si hay un error lanza un error con el mensaje de supabase
 
@@ -125,9 +117,7 @@ async function createAnomaly(input: {
   windowTransactions: number;
   transactions: TransactionRecord[];
 }) {
-  const supabase = await runLoggedStep(input.logContext, "create Supabase client for anomaly", () =>
-    getSupabaseAdmin(),
-  );
+  const supabase = getSupabaseAdmin();
   const { data: anomaly, error: anomalyError } = await runLoggedStep(
     input.logContext,
     `insert anomaly ${input.type}`,
@@ -170,11 +160,6 @@ async function createAnomaly(input: {
     ),
   );
   failOnDatabaseError(linksError, input.logContext, `link transactions to anomaly ${input.type}`);
-  logger("POST /api/transactions anomaly saved", {
-    ...input.logContext,
-    anomalyType: input.type,
-    transactionLinks: input.transactions.length,
-  });
 
   return {
     id: String(anomaly.id),
@@ -319,37 +304,16 @@ export async function registerTransaction(
   input: TransactionInput,
   logContext: TransactionLogContext,
 ) {
-  logger("POST /api/transactions normalizing transaction", {
-    ...logContext,
-    transactionId: input.idTxn,
-  });
   const transaction = await runLoggedStep(logContext, "normalize transaction", () =>
     normalizeInput(input),
   );
-  logger("POST /api/transactions transaction normalized", {
-    ...logContext,
-    transactionId: transaction.idTxn,
-    windowTransactions: transaction.windowTransactions,
-  });
-  logger("POST /api/transactions validating HMAC", {
-    ...logContext,
-    transactionId: transaction.idTxn,
-    hashLength: transaction.hash.length,
-  });
   const hashValid = await runLoggedStep(logContext, "validate transaction HMAC", () =>
     verifyTransactionHash(transaction),
   );
-  logger("POST /api/transactions HMAC validation completed", {
-    ...logContext,
-    transactionId: transaction.idTxn,
-    hashValid,
-  });
   const windowTransactions = transaction.windowTransactions;
-  logger("POST /api/transactions connecting to Supabase", logContext);
   const supabase = await runLoggedStep(logContext, "create Supabase admin client", () =>
     getSupabaseAdmin(),
   );
-  logger("POST /api/transactions Supabase client ready", logContext);
 
   const { data: user, error: userError } = await runLoggedStep(
     logContext,
@@ -386,12 +350,6 @@ export async function registerTransaction(
     mapTransaction(row as DatabaseTransaction),
   );
   const duplicateId = existingTransactions.length > 0;
-  logger("POST /api/transactions duplicate check completed", {
-    ...logContext,
-    transactionId: transaction.idTxn,
-    duplicateId,
-    matchingTransactions: existingTransactions.length,
-  });
 
   const { data: insertedRow, error: insertError } = await runLoggedStep(
     logContext,
@@ -423,18 +381,9 @@ export async function registerTransaction(
   }
 
   const savedTransaction = mapTransaction(insertedRow as DatabaseTransaction);
-  logger("POST /api/transactions transaction inserted", {
-    ...logContext,
-    transactionId: transaction.idTxn,
-    databaseId: savedTransaction.id,
-  });
   const anomalies: AnomalyRecord[] = [];
 
   if (!hashValid) {
-    logger("POST /api/transactions recording invalid-hash anomaly", {
-      ...logContext,
-      transactionId: transaction.idTxn,
-    });
     anomalies.push(
       await createAnomaly({
         logContext,
@@ -453,10 +402,6 @@ export async function registerTransaction(
   }
 
   if (duplicateId) {
-    logger("POST /api/transactions recording duplicate-ID anomaly", {
-      ...logContext,
-      transactionId: transaction.idTxn,
-    });
     const duplicateGroup = [...existingTransactions, savedTransaction];
     anomalies.push(
       await createAnomaly({
@@ -478,12 +423,6 @@ export async function registerTransaction(
   const dateTimestamp = new Date(transaction.date).getTime();
   const receivedTimestamp = new Date(savedTransaction.createdAt).getTime();
   const windowMilliseconds = ANOMALY_MAX_SPAN_SECONDS * 1000;
-  logger("POST /api/transactions querying anomaly windows", {
-    ...logContext,
-    transactionId: transaction.idTxn,
-    maxSpanSeconds: ANOMALY_MAX_SPAN_SECONDS,
-    windowTransactions,
-  });
   const [eventTimeResult, receivedTimeResult] = await Promise.all([
     runLoggedStep(logContext, "query event-time anomaly window", () =>
       supabase
@@ -506,11 +445,6 @@ export async function registerTransaction(
   ]);
   failOnDatabaseError(eventTimeResult.error, logContext, "query event-time anomaly window");
   failOnDatabaseError(receivedTimeResult.error, logContext, "query received-time anomaly window");
-  logger("POST /api/transactions anomaly window queries completed", {
-    ...logContext,
-    eventTimeMatches: eventTimeResult.data?.length ?? 0,
-    receivedTimeMatches: receivedTimeResult.data?.length ?? 0,
-  });
 
   const { eventTimeWindow, receivedTimeWindow } = await runLoggedStep(
     logContext,
@@ -536,21 +470,7 @@ export async function registerTransaction(
     receivedTimeWindow !== null &&
     (!eventTimeWindow || receivedTimeWindow.length > eventTimeWindow.length);
   const window = detectedByReceivedTime ? receivedTimeWindow : eventTimeWindow;
-  logger("POST /api/transactions anomaly evaluation completed", {
-    ...logContext,
-    transactionId: transaction.idTxn,
-    detectedByReceivedTime,
-    eventTimeWindowSize: eventTimeWindow?.length ?? 0,
-    receivedTimeWindowSize: receivedTimeWindow?.length ?? 0,
-    anomalyDetected: Boolean(window),
-  });
   if (window) {
-    logger("POST /api/transactions recording potential-fraud anomaly", {
-      ...logContext,
-      transactionId: transaction.idTxn,
-      windowSize: window.length,
-      detectedByReceivedTime,
-    });
     anomalies.push(
       await createAnomaly({
         logContext,
@@ -570,14 +490,6 @@ export async function registerTransaction(
     );
   }
 
-  logger("POST /api/transactions transaction registration completed", {
-    ...logContext,
-    transactionId: transaction.idTxn,
-    databaseId: savedTransaction.id,
-    hashValid,
-    duplicateId,
-    anomalyCount: anomalies.length,
-  });
   return {
     transaction: savedTransaction,
     hashValid,

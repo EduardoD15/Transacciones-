@@ -2,7 +2,7 @@
 // conversion a formato ISO 8601
 const COLOMBIA_TIME_ZONE = "America/Bogota";
 const COLOMBIA_DATE_TIME_PATTERN =
-  /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:-05:00)?$/;//formato estricto de la fecha
+  /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|-05:00)?$/;//formato estricto de la fecha
 
 export function isColombiaDateTime(value: string) {
   if (!COLOMBIA_DATE_TIME_PATTERN.test(value)) return false;
@@ -10,7 +10,7 @@ export function isColombiaDateTime(value: string) {
 }//verifica si la fecha es válida y tiene el formato correcto, con o sin el sufijo
 
 function withColombiaOffset(value: string) {
-  return value.endsWith("-05:00") ? value : `${value}-05:00`;
+  return value.endsWith("Z") || value.endsWith("-05:00") ? value : `${value}-05:00`;
 }//agrega el sufijo -05:00 si no está presente
 
 export function toColombiaISOString(value: string) {

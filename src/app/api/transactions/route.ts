@@ -13,7 +13,7 @@ const transactionSchema = z.object({
   idTxn: z.union([z.string(), z.number()]).refine((value) => String(value).trim().length > 0),
   user: z.string().trim().min(1),
   date: z.string().refine(isColombiaDateTime, {
-    message: "Usa fecha y hora de Colombia, con o sin el sufijo -05:00.",
+    message: "Usa fecha y hora de Colombia, con o sin -05:00, o una fecha UTC terminada en Z.",
   }),
   value: z.number().finite(),
   paymentMethod: z.string(),
@@ -23,20 +23,13 @@ const transactionSchema = z.object({
 });
 
 const transactionBatchSchema = z.array(transactionSchema).min(1);//por si es un arreglo
+const RAW_BODY_LOG_LIMIT = 4000;
 
 function postResponse(
   requestId: string,
-  startedAt: number,
-  stage: string,
   payload: Record<string, unknown>,
   status = 200,
 ) {
-  logger("POST /api/transactions response sent", {
-    requestId,
-    stage,
-    status,
-    durationMs: Date.now() - startedAt,
-  });
   return NextResponse.json({ requestId, ...payload }, { status });
 }
 
@@ -60,47 +53,54 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const requestId = randomUUID();
-  const startedAt = Date.now();
   logger("POST /api/transactions received", {
     requestId,
     method: request.method,
     contentType: request.headers.get("content-type"),
   });
 
+  let rawBody: string;
+  try {
+    rawBody = await request.text();
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Error desconocido al leer el body.";
+    logger("POST /api/transactions body read failed", { requestId, message });
+    return postResponse(requestId, {
+      received: true,
+      processed: false,
+      error: "No fue posible leer el cuerpo de la solicitud.",
+      details: message,
+    }, 400);
+  }
+
+  logger("POST /api/transactions raw body captured", {
+    requestId,
+    bodyLength: rawBody.length,
+    truncated: rawBody.length > RAW_BODY_LOG_LIMIT,
+    body: rawBody.slice(0, RAW_BODY_LOG_LIMIT),
+  });
+
   let body: unknown;
   try {
-    logger("POST /api/transactions reading JSON body", { requestId });
-    body = await request.json();
-    logger("POST /api/transactions body parsed", {
-      requestId,
-      bodyType: Array.isArray(body) ? "array" : typeof body,
-      keys: body !== null && typeof body === "object" && !Array.isArray(body)
-        ? Object.keys(body)
-        : undefined,
-      itemCount: Array.isArray(body) ? body.length : undefined,
-    });
+    body = JSON.parse(rawBody);
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Error desconocido al leer JSON.";
+    const message = error instanceof Error ? error.message : "Error desconocido al procesar JSON.";
     logger("POST /api/transactions invalid JSON", { requestId, message });
-    return postResponse(requestId, startedAt, "invalid-json", {
+    return postResponse(requestId, {
       received: true,
       processed: false,
       error: "El cuerpo debe ser JSON válido.",
       details: message,
-    });
+    }, 400);
   }
 
   const isBatch = Array.isArray(body);//si recibio un arreglo
-  logger("POST /api/transactions validation started", {
-    requestId,
-    schema: isBatch ? "transaction batch" : "single transaction",
-  });
   const parsedBody = isBatch
     ? transactionBatchSchema.safeParse(body)
     : transactionSchema.safeParse(body);
   if (!parsedBody.success) {
     const details = parsedBody.error.issues.map(({ path, code, message }) => ({
-      path,
+      path: path.length > 0 ? path.map(String).join(".") : "(body)",
       code,
       message,
     }));
@@ -109,42 +109,20 @@ export async function POST(request: Request) {
       bodyType: isBatch ? "array" : typeof body,
       details,
     });
-    return postResponse(requestId, startedAt, "validation-failed", {
+    return postResponse(requestId, {
       received: true,
       processed: false,
       error: "La solicitud no tiene los campos requeridos.",
       details,
-    });
+    }, 422);
   }
-  logger("POST /api/transactions validation passed", {
-    requestId,
-    transactionCount: Array.isArray(parsedBody.data) ? parsedBody.data.length : 1,
-  });
-
   //varias transaciones 
   if (Array.isArray(parsedBody.data)) {
     const results = [];
-    logger("POST /api/transactions batch processing started", {
-      requestId,
-      total: parsedBody.data.length,
-    });
     for (let index = 0; index < parsedBody.data.length; index += 1) {
       try {
-        logger("POST /api/transactions batch item registering", {
-          requestId,
-          index,
-          transactionId: parsedBody.data[index].idTxn,
-        });
         const result = await registerTransaction(parsedBody.data[index], { requestId, index });
         results.push(result);
-        logger("POST /api/transactions batch item processed", {
-          requestId,
-          index,
-          transactionId: result.transaction.id,
-          hashValid: result.hashValid,
-          duplicateId: result.duplicateId,
-          anomalyCount: result.anomalies.length,
-        });
       } catch (error) {
         const message = error instanceof Error ? error.message : "Error inesperado.";
         logger("POST /api/transactions batch failed", {
@@ -154,7 +132,7 @@ export async function POST(request: Request) {
           message,
         });
         const status = /configur|falta configurar/i.test(message) ? 503 : 500;
-        return postResponse(requestId, startedAt, "batch-item-failed", {
+        return postResponse(requestId, {
           error: message,
           failedIndex: index,
           processedCount: results.length,
@@ -163,11 +141,7 @@ export async function POST(request: Request) {
       }
     }
 
-    logger("POST /api/transactions batch processing completed", {
-      requestId,
-      processedCount: results.length,
-    });
-    return postResponse(requestId, startedAt, "batch-completed", {
+    return postResponse(requestId, {
       message: "Todas las transacciones del lote fueron registradas y evaluadas.",
       total: results.length,
       results,
@@ -176,21 +150,9 @@ export async function POST(request: Request) {
 
   //si es una sola transacción
   try {
-    logger("POST /api/transactions registering", {
-      requestId,
-      transactionId: parsedBody.data.idTxn,
-      hashLength: parsedBody.data.hash.length,
-    });
     const result = await registerTransaction(parsedBody.data, { requestId });
-    logger("POST /api/transactions processed", {
-      requestId,
-      transactionId: result.transaction.id,
-      hashValid: result.hashValid,
-      duplicateId: result.duplicateId,
-      anomalyCount: result.anomalies.length,
-    });
 
-    return postResponse(requestId, startedAt, "transaction-processed", {
+    return postResponse(requestId, {
       message: "Transacción registrada y evaluada; las anomalías no bloquean el registro.",
       ...result,
     }, 201);
@@ -198,6 +160,6 @@ export async function POST(request: Request) {
     const message = error instanceof Error ? error.message : "Error inesperado.";
     logger("POST /api/transactions processing failed", { requestId, message });
     const status = /configur|falta configurar/i.test(message) ? 503 : 500;
-    return postResponse(requestId, startedAt, "processing-failed", { error: message }, status);
+    return postResponse(requestId, { error: message }, status);
   }
 }
