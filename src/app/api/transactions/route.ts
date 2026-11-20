@@ -11,7 +11,7 @@ import { isValidDateTime } from "@/lib/colombia-date";//validaciones
 // Zod para validar estructura y tipos de datos
 const transactionSchema = z.object({
   idTxn: z.union([z.string(), z.number()]).refine((value) => String(value).trim().length > 0),
-  user: z.string().trim().min(1),
+  user: z.string().refine((value) => value.trim().length > 0),
   date: z.string().refine(isValidDateTime, {
     message: "Usa una fecha y hora ISO 8601 válida con Z, offset horario o sin zona.",
   }),

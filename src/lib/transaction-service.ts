@@ -2,7 +2,7 @@ import { verifyTransactionHash } from "@/lib/security";
 import { logger } from "@/lib/logger";
 import { getSupabaseAdmin } from "@/lib/supabase";
 import { ANOMALY_MAX_SPAN_SECONDS } from "@/lib/anomaly-rules";
-import { toColombiaISOString } from "@/lib/colombia-date";
+import { toUTCISOString } from "@/lib/colombia-date";
 import { getWindowRule } from "@/lib/window-rules";
 import type {
   AnomalyRecord,
@@ -87,7 +87,7 @@ function mapTransaction(row: DatabaseTransaction): TransactionRecord {
 
 //normaliza los datos de entrada, convierte a string...
 function normalizeInput(input: TransactionInput): TransactionInput & { windowTransactions: number } {
-  const date = toColombiaISOString(input.date);
+  const date = toUTCISOString(input.date);
   const windowTransactions = getWindowRule(date).transactions;//obtiene la cantidad de transacciones permitidas en el periodo de tiempo
 
   return {

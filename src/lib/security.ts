@@ -5,11 +5,11 @@ import type { TransactionInput } from "@/lib/types";
 
 export function buildTransactionHash(transaction: TransactionInput): string {
   const payload = {
-    idTxn: String(transaction.idTxn).trim(),
-    user: String(transaction.user).trim().toLowerCase(),
+    idTxn: transaction.idTxn,
+    user: transaction.user,
     date: transaction.date,
-    value: Number(transaction.value),
-    paymentMethod: String(transaction.paymentMethod).trim(),
+    value: transaction.value,
+    paymentMethod: transaction.paymentMethod,
   };
 
   const secret = process.env.TRANSACTION_SECRET;

@@ -1,29 +1,28 @@
-//zona horaria de colombia, validaciones de fecha y hora,
-// conversion a formato ISO 8601
+//Validación ISO 8601 y normalización de instantes a UTC.
+//Colombia se usa únicamente para decidir la ventana horaria de negocio.
 const COLOMBIA_TIME_ZONE = "America/Bogota";
-const COLOMBIA_DATE_TIME_PATTERN =
-  /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})?$/;//formato ISO 8601
+const ISO_DATE_TIME_PATTERN =
+  /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})?)?$/;
 
 export function isValidDateTime(value: string) {
-  if (!COLOMBIA_DATE_TIME_PATTERN.test(value)) return false;
-  return !Number.isNaN(new Date(withColombiaOffset(value)).getTime());
+  if (!ISO_DATE_TIME_PATTERN.test(value)) return false;
+  return !Number.isNaN(new Date(withUTCDesignator(value)).getTime());
 }//verifica si la fecha ISO 8601 es válida
 
-function withColombiaOffset(value: string) {
-  return value.endsWith("Z") || /[+-]\d{2}:\d{2}$/.test(value) ? value : `${value}-05:00`;
-}//interpreta fechas sin zona como hora de Colombia
+function withUTCDesignator(value: string) {
+  if (value.endsWith("Z") || /[+-]\d{2}:\d{2}$/.test(value)) return value;
+  return value.includes("T") ? `${value}Z` : `${value}T00:00:00Z`;
+}//interpreta fechas sin zona como UTC
 
-export function toColombiaISOString(value: string) {
-  const timestamp = value.endsWith("Z") || /[+-]\d{2}:\d{2}$/.test(value)
-    ? new Date(value)
-    : new Date(withColombiaOffset(value));
+export function toUTCISOString(value: string) {
+  const timestamp = new Date(withUTCDesignator(value));
 
   if (Number.isNaN(timestamp.getTime())) {
-    throw new Error("La fecha debe ser una fecha y hora válida de Colombia.");
+    throw new Error("La fecha debe ser una fecha ISO 8601 válida.");
   }
 
   return timestamp.toISOString();
-}//convierte la fecha a formato ISO 8601, agregando el sufijo -05:00 si no está presente
+}//normaliza el instante UTC para almacenarlo
 
 export function colombiaClock(value: string) {
   const parts = new Intl.DateTimeFormat("en-US", {
@@ -32,7 +31,7 @@ export function colombiaClock(value: string) {
     minute: "2-digit",
     second: "2-digit",
     timeZone: COLOMBIA_TIME_ZONE,
-  }).formatToParts(new Date(toColombiaISOString(value)));
+  }).formatToParts(new Date(toUTCISOString(value)));
   const hour = parts.find((part) => part.type === "hour")?.value;
   const minute = parts.find((part) => part.type === "minute")?.value;
   const second = parts.find((part) => part.type === "second")?.value;

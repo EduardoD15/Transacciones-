@@ -35,7 +35,7 @@ NEXT_PUBLIC_WINDOW_NIGHT_TRANSACTIONS=3
 
 La clave de transacciones debe ser la misma en el emisor y en esta aplicación. Si el hash no coincide, la transacción se guarda con `hash_valido=false` y se crea una anomalía `INVALID_HASH`; no se rechaza el pedido.
 
-La fecha `date` debe ser una fecha y hora ISO 8601 válida. Se aceptan fechas sin zona (interpretadas como hora de Colombia), UTC terminadas en `Z` y offsets horarios, como `-05:00`, `-04:00` o `+02:00`. **Para el HMAC se usa el texto exacto de `date` recibido**, sin convertirlo ni cambiar su zona. Por eso, aunque `2026-09-23T10:30:01-05:00` y `2026-09-23T15:30:01Z` representen el mismo instante, generan hashes diferentes. Para almacenar la transacción y evaluar ventanas, el servidor interpreta el instante y lo normaliza; la hora de las ventanas se evalúa en Colombia.
+La fecha `date` acepta una fecha (`2026-09-23`) o una fecha y hora ISO 8601, con `Z`, con cualquier offset horario, o sin zona. Sin zona se interpreta como UTC al guardar. **Para el HMAC se usan los valores y tipos originales de `idTxn`, `user`, `date`, `value` y `paymentMethod`, sin convertirlos, recortarlos ni cambiar mayúsculas/minúsculas.** Deben firmarse en ese orden y con esos nombres de propiedad. Por eso `idTxn: 10001` no produce el mismo HMAC que `idTxn: "10001"`; tampoco son iguales dos textos de fecha que representen el mismo instante. Para guardarlo en Supabase, el servidor convierte el instante a UTC. La regla de ventana horaria sigue evaluándose con la hora de Colombia.
 
 | Hora incluida en `date` | Ventana | Variable |
 |---|---:|---|
@@ -81,11 +81,11 @@ En el Environment activo de Postman configura `TRANSACTION_SECRET` con el mismo 
 const body = JSON.parse(pm.request.body.raw);
 
 const transaction = {
-  idTxn: String(body.idTxn).trim(),
-  user: String(body.user).trim().toLowerCase(),
-  date: String(body.date),
-  value: Number(body.value),
-  paymentMethod: String(body.paymentMethod).trim()
+  idTxn: body.idTxn,
+  user: body.user,
+  date: body.date,
+  value: body.value,
+  paymentMethod: body.paymentMethod
 };
 
 const secret = pm.environment.get("TRANSACTION_SECRET");
@@ -132,21 +132,24 @@ const transactionsWithHashes = transactions.map((body, index) => {
     throw new Error(`El elemento ${index + 1} debe ser un objeto de transacción.`);
   }
 
-  const rawDate = String(body.date);
+  const rawDate = body.date;
+  if (typeof rawDate !== "string") {
+    throw new Error(`La fecha del elemento ${index + 1} debe ser texto.`);
+  }
   const dateForValidation = /(?:Z|[+-]\d{2}:\d{2})$/i.test(rawDate)
     ? rawDate
-    : `${rawDate}-05:00`;
+    : `${rawDate}Z`;
   const parsedDate = new Date(dateForValidation);
   if (Number.isNaN(parsedDate.getTime())) {
     throw new Error(`La fecha del elemento ${index + 1} no es válida.`);
   }
 
   const transaction = {
-    idTxn: String(body.idTxn).trim(),
-    user: String(body.user).trim().toLowerCase(),
+    idTxn: body.idTxn,
+    user: body.user,
     date: rawDate,
-    value: Number(body.value),
-    paymentMethod: String(body.paymentMethod).trim()
+    value: body.value,
+    paymentMethod: body.paymentMethod
   };
   const hash = CryptoJS.HmacSHA256(
     JSON.stringify(transaction),
@@ -239,6 +242,10 @@ Los tipos de anomalía (`POTENTIAL_FRAUD`, `DUPLICATE_ID` e `INVALID_HASH`) se m
 ## 6. Acceso público de la API
 
 `POST /api/transactions` no exige sesión ni token: cualquier cliente que tenga la URL del servidor puede llamarlo. Los casos de negocio (hash inválido, ID repetido, ventana sospechosa) se guardan como anomalías y no bloquean el POST. Si el body no es JSON válido, la API responde `400`; si el JSON es válido pero sus campos no cumplen el esquema, responde `422` con `received: true`, `processed: false` y el detalle de validación. En ambos casos no registra una transacción con datos inválidos. Cada petición agrega un `requestId` a los logs para seguirla desde la entrada. Los errores reales de configuración, conexión o base de datos se reportan con estado `500` o `503`.
+
+Para comparar los HMAC del archivo local `enviosPosts.txt` con el algoritmo actual, ejecuta `node scripts/check-post-hashes.mjs`. La comprobación lee `TRANSACTION_SECRET` de `.env.local`, solo imprime cantidades (no imprime la clave, emails ni hashes) y no reenvía las peticiones ni modifica Supabase.
+
+Para repetir los cuerpos capturados, primero ejecuta `node scripts/replay-posts.mjs` en modo simulación. Para enviarlos secuencialmente al servidor local y ver cada status/`hashValid`, ejecuta `node scripts/replay-posts.mjs --send`; el destino predeterminado es `http://localhost:3000/api/transactions` y se puede cambiar con `--url=...`. Cada POST sí crea registros y anomalías en la base de datos; no ejecutes el replay varias veces salvo que quieras registrar otra copia.
 
 La API escribe en Supabase con la clave secreta de servidor (`SUPABASE_SERVICE_ROLE_KEY`) y RLS activado. El esquema crea políticas explícitas para que `service_role` lea y modifique `usuarios`, `transacciones`, `anomalias` y `anomalia_transacciones`; revoca acceso de tabla y secuencias a `anon` y `authenticated`. **No concedas permisos de escritura a roles públicos.** Postman llama a Next.js, no directamente a Supabase; abrir las tablas permitiría saltarse la validación de hashes e IDs. Si continúa el error de RLS después de ejecutar el SQL, revisa que la aplicación realmente esté usando la clave secreta de servidor y reinicia el proceso. El endpoint sin autenticación puede ser abusado por cualquiera que obtenga la URL; no lo publiques con ngrok hasta decidir cómo limitar abuso.
 
