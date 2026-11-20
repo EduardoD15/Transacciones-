@@ -35,7 +35,7 @@ NEXT_PUBLIC_WINDOW_NIGHT_TRANSACTIONS=3
 
 La clave de transacciones debe ser la misma en el emisor y en esta aplicación. Si el hash no coincide, la transacción se guarda con `hash_valido=false` y se crea una anomalía `INVALID_HASH`; no se rechaza el pedido.
 
-La fecha `date` representa un instante de tiempo y la ventana se elige según la hora colombiana del evento. Se aceptan `2026-09-23T10:30:01.120` (sin zona; se interpreta como hora colombiana), `2026-09-23T10:30:01.120-05:00` (desfase colombiano explícito) y fechas UTC terminadas en `Z`, como `2026-09-23T15:30:01.120Z`. Se rechazan otros sufijos de zona para evitar ambigüedad. El servidor normaliza las fechas al mismo instante UTC al guardar y al validar el HMAC:
+La fecha `date` debe ser una fecha y hora ISO 8601 válida. Se aceptan fechas sin zona (interpretadas como hora de Colombia), UTC terminadas en `Z` y offsets horarios, como `-05:00`, `-04:00` o `+02:00`. **Para el HMAC se usa el texto exacto de `date` recibido**, sin convertirlo ni cambiar su zona. Por eso, aunque `2026-09-23T10:30:01-05:00` y `2026-09-23T15:30:01Z` representen el mismo instante, generan hashes diferentes. Para almacenar la transacción y evaluar ventanas, el servidor interpreta el instante y lo normaliza; la hora de las ventanas se evalúa en Colombia.
 
 | Hora incluida en `date` | Ventana | Variable |
 |---|---:|---|
@@ -83,7 +83,7 @@ const body = JSON.parse(pm.request.body.raw);
 const transaction = {
   idTxn: String(body.idTxn).trim(),
   user: String(body.user).trim().toLowerCase(),
-  date: new Date(body.date).toISOString(),
+  date: String(body.date),
   value: Number(body.value),
   paymentMethod: String(body.paymentMethod).trim()
 };
@@ -132,11 +132,11 @@ const transactionsWithHashes = transactions.map((body, index) => {
     throw new Error(`El elemento ${index + 1} debe ser un objeto de transacción.`);
   }
 
-  const rawDate = String(body.date).trim();
-  const dateWithZone = /(?:Z|[+-]\d{2}:\d{2})$/i.test(rawDate)
+  const rawDate = String(body.date);
+  const dateForValidation = /(?:Z|[+-]\d{2}:\d{2})$/i.test(rawDate)
     ? rawDate
     : `${rawDate}-05:00`;
-  const parsedDate = new Date(dateWithZone);
+  const parsedDate = new Date(dateForValidation);
   if (Number.isNaN(parsedDate.getTime())) {
     throw new Error(`La fecha del elemento ${index + 1} no es válida.`);
   }
@@ -144,7 +144,7 @@ const transactionsWithHashes = transactions.map((body, index) => {
   const transaction = {
     idTxn: String(body.idTxn).trim(),
     user: String(body.user).trim().toLowerCase(),
-    date: parsedDate.toISOString(),
+    date: rawDate,
     value: Number(body.value),
     paymentMethod: String(body.paymentMethod).trim()
   };

@@ -1,14 +1,13 @@
 //construye hash y lo verifica, comparacion
 import crypto from "node:crypto";
 
-import { toColombiaISOString } from "@/lib/colombia-date";
 import type { TransactionInput } from "@/lib/types";
 
 export function buildTransactionHash(transaction: TransactionInput): string {
   const payload = {
     idTxn: String(transaction.idTxn).trim(),
     user: String(transaction.user).trim().toLowerCase(),
-    date: toColombiaISOString(transaction.date),
+    date: transaction.date,
     value: Number(transaction.value),
     paymentMethod: String(transaction.paymentMethod).trim(),
   };

@@ -1,0 +1,2376 @@
+PS C:\Users\eduar\Desktop\Transacciones-> npm run dev
+
+> tarea-2-1@0.1.0 dev
+next dev
+> 
+
+▲ Next.js 16.4.3 (Turbopack)
+
+- Local: http://localhost:3000
+- Network: http://172.23.48.1:3000
+- Environments: .env.local
+✓ Ready in 1520ms
+✓ Running next.config.ts took 127ms
+- Cache Components enabled
+- Partial Prefetching enabled
+
+○ Compiling / ...
+GET / 200 in 1976ms (next.js: 872ms, application-code: 1104ms)
+GET /api/anomalies 200 in 1016ms (next.js: 82ms, application-code: 933ms)
+GET /api/transactions 200 in 1788ms (next.js: 566ms, application-code: 1222ms)
+GET /api/anomalies 200 in 921ms (next.js: 5ms, application-code: 916ms)
+GET /api/transactions 200 in 1223ms (next.js: 6ms, application-code: 1217ms)
+GET / 200 in 219ms (next.js: 5ms, application-code: 214ms)
+GET /api/transactions 200 in 203ms (next.js: 6ms, application-code: 196ms)
+GET /api/transactions 200 in 218ms (next.js: 8ms, application-code: 209ms)
+GET /api/anomalies 200 in 276ms (next.js: 8ms, application-code: 268ms)
+GET /api/anomalies 200 in 221ms (next.js: 7ms, application-code: 214ms)
+GET / 200 in 185ms (next.js: 6ms, application-code: 178ms)
+GET /api/anomalies 200 in 190ms (next.js: 8ms, application-code: 182ms)
+GET /api/transactions 200 in 276ms (next.js: 7ms, application-code: 269ms)
+GET /api/transactions 200 in 262ms (next.js: 8ms, application-code: 254ms)
+GET /api/anomalies 200 in 328ms (next.js: 8ms, application-code: 320ms)
+GET /api/anomalies 200 in 342ms (next.js: 12ms, application-code: 331ms)
+GET /api/transactions 200 in 746ms (next.js: 5ms, application-code: 741ms)
+[Appresso] POST /api/transactions received {
+requestId: '6daeddaf-93db-4397-b067-62bf81449b2f',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '6daeddaf-93db-4397-b067-62bf81449b2f',
+bodyLength: 204,
+truncated: false,
+body: '{"idTxn": 10003, "user": "uckuxyxop@empresa.com", "date": "2024-12-23T22:33:24.266Z", "value": 196139, "paymentMethod": -308477, "hash": "321d90af2febd9c0c78f4dfeae5e5f582a42e40a4e866e3053b7dc6a6f465481"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '6daeddaf-93db-4397-b067-62bf81449b2f',
+bodyType: 'object',
+details: [
+{
+path: 'paymentMethod',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received number'
+}
+]
+}
+POST /api/transactions 422 in 42ms (next.js: 3ms, application-code: 39ms)
+[Appresso] POST /api/transactions received {
+requestId: '3e6c96c2-6545-4bae-904e-d02185609dab',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '3e6c96c2-6545-4bae-904e-d02185609dab',
+bodyLength: 205,
+truncated: false,
+body: '{"idTxn": 10049, "user": "wruvvvz@outlook.com", "date": "2023-09-14T16:53:31.430Z", "value": 1144044, "paymentMethod": "Tarjeta", "hash": "463b5473d4356cf6826151e7b03c8474c53506dfa300c9eaf126ff66b0bb5570"}'
+}
+POST /api/transactions 201 in 1749ms (next.js: 3ms, application-code: 1746ms)
+[Appresso] POST /api/transactions received {
+requestId: '627f7c4a-904f-43c1-a2ab-1c8718762fd1',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '627f7c4a-904f-43c1-a2ab-1c8718762fd1',
+bodyLength: 201,
+truncated: false,
+body: '{"idTxn": 10016, "user": "clya@hotmail.com", "date": "2021-06-16T22:16:27.089Z", "value": 2639724, "paymentMethod": "Paypal", "hash": "775a178350ef0edc2f2471e794b820fdfdf15a4286fb0bc1db861735a855956f"}'
+}
+POST /api/transactions 201 in 855ms (next.js: 4ms, application-code: 851ms)
+[Appresso] POST /api/transactions received {
+requestId: 'd7465ed8-091e-407b-8ed7-e421bd9d15ad',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'd7465ed8-091e-407b-8ed7-e421bd9d15ad',
+bodyLength: 205,
+truncated: false,
+body: '{"idTxn": 10008, "user": "qawlev@outlook.com", "date": "2022-07-27T20:18:48.453Z", "value": 3905061, "paymentMethod": "Efectivo", "hash": "becb4d1d003b4aceb72f3b871d74d5a161f1bd14aea1be50b31f113529606e46"}'
+}
+POST /api/transactions 201 in 941ms (next.js: 2ms, application-code: 939ms)
+[Appresso] POST /api/transactions received {
+requestId: '7ef04da4-674e-4505-9334-7709d49260b5',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '7ef04da4-674e-4505-9334-7709d49260b5',
+bodyLength: 187,
+truncated: false,
+body: '{"idTxn": 10136, "user": false, "date": "2021-10-14T15:16:00.555Z", "value": 800417, "paymentMethod": "Paypal", "hash": "688b16158e2a0c8d8d879939b4f13fdb1021fc37dfbf1c43bbbc98cee4287843"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '7ef04da4-674e-4505-9334-7709d49260b5',
+bodyType: 'object',
+details: [
+{
+path: 'user',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received boolean'
+}
+]
+}
+POST /api/transactions 422 in 21ms (next.js: 3ms, application-code: 18ms)
+[Appresso] POST /api/transactions received {
+requestId: 'a0bd2cf2-d58d-4feb-8235-92b2f6a68e17',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'a0bd2cf2-d58d-4feb-8235-92b2f6a68e17',
+bodyLength: 207,
+truncated: false,
+body: '{"idTxn": 10112, "user": "isxmlsav@outlook.com", "date": "2016-04-17T05:28:55.900Z", "value": 2068465, "paymentMethod": "Efectivo", "hash": "69add090853989b00a5435164033a18160cddad65a0fef03215c74215e82c4e6"}'
+}
+POST /api/transactions 201 in 895ms (next.js: 4ms, application-code: 890ms)
+[Appresso] POST /api/transactions received {
+requestId: 'e8999c00-a057-424e-8383-5ce6b88abc16',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'e8999c00-a057-424e-8383-5ce6b88abc16',
+bodyLength: 208,
+truncated: false,
+body: '{"idTxn": 10029, "user": "nywyuye@outlook.com", "date": "2019-08-23T23:54:44.575Z", "value": 2314233, "paymentMethod": "Google Pay", "hash": "ff55ae49e8201bb5f4588763cc757111dc18dc6a3326eb658e08dd31dc0c3266"}'
+}
+POST /api/transactions 201 in 1120ms (next.js: 2ms, application-code: 1117ms)
+[Appresso] POST /api/transactions received {
+requestId: 'f57a651d-fc41-4a55-bf2c-348bc7afe62b',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'f57a651d-fc41-4a55-bf2c-348bc7afe62b',
+bodyLength: 208,
+truncated: false,
+body: '{"idTxn": "undefined", "user": "gvilz@yahoo.com", "date": "2026-09-22T04:19:13.834Z", "value": 3751990, "paymentMethod": "Efectivo", "hash": "69a400d8f69b88c46ca7e8a8acf335193fa33a293a1ecec0b409732b86d9bfde"}'
+}
+POST /api/transactions 201 in 992ms (next.js: 3ms, application-code: 989ms)
+[Appresso] POST /api/transactions received {
+requestId: '0ff6e9ea-4d69-4054-a353-af06bde324c5',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '0ff6e9ea-4d69-4054-a353-af06bde324c5',
+bodyLength: 182,
+truncated: false,
+body: '{"idTxn": 10146, "user": "cexbpu@gmail.com", "date": -654751, "value": 3669791, "paymentMethod": "Paypal", "hash": "18d93567c90e503ca98d2ead9a76c31a2b3b0324516f926a1cd7f4dc85695170"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '0ff6e9ea-4d69-4054-a353-af06bde324c5',
+bodyType: 'object',
+details: [
+{
+path: 'date',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received number'
+}
+]
+}
+POST /api/transactions 422 in 20ms (next.js: 4ms, application-code: 16ms)
+[Appresso] POST /api/transactions received {
+requestId: 'b2a7f963-229c-4e26-8a7d-6bcdde19299f',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'b2a7f963-229c-4e26-8a7d-6bcdde19299f',
+bodyLength: 213,
+truncated: false,
+body: '{"idTxn": 10004, "user": "uckuxyxop@empresa.com", "date": "2024-12-23T22:33:25.266Z", "value": 1287686, "paymentMethod": "Transferencia", "hash": "f9e445aee443f6aed1dddfb7c36c015763f2f8d93f6db72f53f11e509866576a"}'
+}
+POST /api/transactions 201 in 1583ms (next.js: 4ms, application-code: 1580ms)
+[Appresso] POST /api/transactions received {
+requestId: '1b7112a8-e067-4b04-a9fd-23b518f58bea',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '1b7112a8-e067-4b04-a9fd-23b518f58bea',
+bodyLength: 200,
+truncated: false,
+body: '{"idTxn": 10138, "user": "xmfgixxmm@hotmail.com", "date": "2019-04-17T18:08:43.858Z", "value": 1537702, "paymentMethod": "", "hash": "bdfc1a0361ad268f83317159c576eb6ea2ba436105bd47372eefe9a9ca9dbef8"}'
+}
+POST /api/transactions 201 in 2.7s (next.js: 3ms, application-code: 2.7s)
+[Appresso] POST /api/transactions received {
+requestId: 'c2a50b73-6d41-4906-8be4-c90860b39313',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'c2a50b73-6d41-4906-8be4-c90860b39313',
+bodyLength: 192,
+truncated: false,
+body: '{"idTxn": 10084, "user": "76TWTe04", "date": "2016-04-06T02:43:52.480Z", "value": 303548, "paymentMethod": "Paypal", "hash": "f31cf3c640845764840a169c75037c9fe24f7f6ac5fbf1cdc8173929a3137af6"}'
+}
+POST /api/transactions 201 in 1014ms (next.js: 2ms, application-code: 1011ms)
+[Appresso] POST /api/transactions received {
+requestId: '7b25effc-17ba-4831-9210-6f05486177f8',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '7b25effc-17ba-4831-9210-6f05486177f8',
+bodyLength: 147,
+truncated: false,
+body: '{"idTxn": 10096, "user": "qvumgtuy@outlook.com", "date": "2025-02-21T04:52:03.822Z", "value": 870483, "paymentMethod": "Transferencia", "hash": ""}'
+}
+POST /api/transactions 201 in 885ms (next.js: 2ms, application-code: 882ms)
+[Appresso] POST /api/transactions received {
+requestId: '41603230-1cb5-450f-90d5-bab31c370198',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '41603230-1cb5-450f-90d5-bab31c370198',
+bodyLength: 203,
+truncated: false,
+body: '{"idTxn": 10130, "user": "uhggjjxbtf@empresa.com", "date": "2018-08-23T05:31:23.207Z", "value": 478284, "paymentMethod": false, "hash": "fedd5d44cdc42770790240fdb6fae44a4adb7902a9e1df546acaa8d6021d8c25"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '41603230-1cb5-450f-90d5-bab31c370198',
+bodyType: 'object',
+details: [
+{
+path: 'paymentMethod',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received boolean'
+}
+]
+}
+POST /api/transactions 422 in 18ms (next.js: 3ms, application-code: 15ms)
+[Appresso] POST /api/transactions received {
+requestId: '3dbcd69c-dd27-4f99-90a4-d3bf0d93d4d6',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '3dbcd69c-dd27-4f99-90a4-d3bf0d93d4d6',
+bodyLength: 191,
+truncated: false,
+body: '{"idTxn": 10056, "user": "QNax7ExA", "date": "2025-02-15T06:41:32.787Z", "value": 4289484, "paymentMethod": "null", "hash": "f796815095315a119377b047a30065298a831816fb2b6f61cbd9bb3eb01fe268"}'
+}
+POST /api/transactions 201 in 1026ms (next.js: 2ms, application-code: 1024ms)
+[Appresso] POST /api/transactions received {
+requestId: '212d2bd6-4f2a-4de8-b9b2-0f20af9fdf94',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '212d2bd6-4f2a-4de8-b9b2-0f20af9fdf94',
+bodyLength: 189,
+truncated: false,
+body: '{"idTxn": 10033, "user": "null", "date": "2023-11-13T07:11:12.348Z", "value": 1100067, "paymentMethod": "Paypal", "hash": "f99dd0dc974eed389a36666d228e4ff0211c1be41714a16b324d24e73ae2b3cc"}'
+}
+POST /api/transactions 201 in 838ms (next.js: 2ms, application-code: 835ms)
+[Appresso] POST /api/transactions received {
+requestId: 'f004d08e-9078-467b-b6ce-be579475b9d9',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'f004d08e-9078-467b-b6ce-be579475b9d9',
+bodyLength: 189,
+truncated: false,
+body: '{"idTxn": 10090, "user": false, "date": "2018-07-01T14:56:45.026Z", "value": 1624218, "paymentMethod": "Tarjeta", "hash": "d20b991f09243e51ef8cc4a81e1372d2284f951f6739be9f57e3c0e48ba3ca44"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'f004d08e-9078-467b-b6ce-be579475b9d9',
+bodyType: 'object',
+details: [
+{
+path: 'user',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received boolean'
+}
+]
+}
+POST /api/transactions 422 in 50ms (next.js: 1.9ms, application-code: 49ms)
+[Appresso] POST /api/transactions received {
+requestId: '4cfd9269-95ba-4f3b-b1e2-7dbccbe3891c',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '4cfd9269-95ba-4f3b-b1e2-7dbccbe3891c',
+bodyLength: 203,
+truncated: false,
+body: '{"idTxn": 10100, "user": "qarxosv@outlook.com", "date": "2026-02-26T18:44:04.615Z", "value": "", "paymentMethod": "Google Pay", "hash": "a2a607e8795e4e3f08c59cf523a2a423c1873bb07af700e69b02fbe0e63b103e"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '4cfd9269-95ba-4f3b-b1e2-7dbccbe3891c',
+bodyType: 'object',
+details: [
+{
+path: 'value',
+code: 'invalid_type',
+message: 'Invalid input: expected number, received string'
+}
+]
+}
+POST /api/transactions 422 in 22ms (next.js: 3ms, application-code: 19ms)
+[Appresso] POST /api/transactions received {
+requestId: '1039d866-34fc-4993-8bdd-08038064b970',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '1039d866-34fc-4993-8bdd-08038064b970',
+bodyLength: 211,
+truncated: false,
+body: '{"idTxn": 10047, "user": "wruvvvz@outlook.com", "date": "2023-09-14T16:53:29.430Z", "value": "sBBLSe4D", "paymentMethod": "Google Pay", "hash": "466f79a344168ddfd13ca71f90b9f24a1d701b7b6cbf570c7707e8b6ac123645"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '1039d866-34fc-4993-8bdd-08038064b970',
+bodyType: 'object',
+details: [
+{
+path: 'value',
+code: 'invalid_type',
+message: 'Invalid input: expected number, received string'
+}
+]
+}
+POST /api/transactions 422 in 19ms (next.js: 3ms, application-code: 16ms)
+[Appresso] POST /api/transactions received {
+requestId: '1ced6f21-ceed-4836-8c49-7285908eebd9',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '1ced6f21-ceed-4836-8c49-7285908eebd9',
+bodyLength: 202,
+truncated: false,
+body: '{"idTxn": false, "user": "olqa@outlook.com", "date": "2026-11-26T04:00:30.276Z", "value": 3294013, "paymentMethod": "Tarjeta", "hash": "03b0c78df145be9a815daf43a8cd34d3630ef0fa4f28e14b8f33da96b6fcf24a"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '1ced6f21-ceed-4836-8c49-7285908eebd9',
+bodyType: 'object',
+details: [
+{ path: 'idTxn', code: 'invalid_union', message: 'Invalid input' }
+]
+}
+POST /api/transactions 422 in 16ms (next.js: 3ms, application-code: 13ms)
+[Appresso] POST /api/transactions received {
+requestId: '9e685171-e84f-4c2d-92f9-a3bb0c8325e1',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '9e685171-e84f-4c2d-92f9-a3bb0c8325e1',
+bodyLength: 205,
+truncated: false,
+body: '{"idTxn": 10039, "user": "mkong@outlook.com", "date": "2019-10-28T13:12:53.534Z", "value": 1637961, "paymentMethod": "undefined", "hash": "81180ba2f89169e1b2f4b0df8c9815d4aa3e84e3fd18508b517107284fd7a177"}'
+}
+POST /api/transactions 201 in 1314ms (next.js: 3ms, application-code: 1311ms)
+[Appresso] POST /api/transactions received {
+requestId: 'b3a27d4b-101a-4008-bb53-67b0f0dbb07e',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'b3a27d4b-101a-4008-bb53-67b0f0dbb07e',
+bodyLength: 189,
+truncated: false,
+body: '{"idTxn": 10120, "user": 686987, "date": "2023-01-14T18:31:39.084Z", "value": 1198482, "paymentMethod": "Paypal", "hash": "220abe459ca8b0b499dd357b160e8976d9cb22dc7ce99bf9a1bbb28462be2352"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'b3a27d4b-101a-4008-bb53-67b0f0dbb07e',
+bodyType: 'object',
+details: [
+{
+path: 'user',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received number'
+}
+]
+}
+POST /api/transactions 422 in 18ms (next.js: 3ms, application-code: 15ms)
+[Appresso] POST /api/transactions received {
+requestId: 'ef3530db-6e86-45fd-a6a4-3c692e9e8847',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'ef3530db-6e86-45fd-a6a4-3c692e9e8847',
+bodyLength: 213,
+truncated: false,
+body: '{"idTxn": 10001, "user": "uckuxyxop@empresa.com", "date": "2024-12-23T22:33:22.266Z", "value": 3356240, "paymentMethod": "Transferencia", "hash": "2ab7708dbce8a4dc3f1b81e5b1257009a6b296338ab7010a0443b66635af0656"}'
+}
+POST /api/transactions 201 in 900ms (next.js: 6ms, application-code: 894ms)
+[Appresso] POST /api/transactions received {
+requestId: 'dbb31586-ea26-4ca8-bb4a-b2fdc421b67a',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'dbb31586-ea26-4ca8-bb4a-b2fdc421b67a',
+bodyLength: 203,
+truncated: false,
+body: '{"idTxn": 10069, "user": "nniddl@empresa.com", "date": "2015-09-27T03:07:38.507Z", "value": 2745305, "paymentMethod": "Paypal", "hash": "2f0d654755a12bf1ef08d31ba49c9dee4a56b2c2dc10a58efbdcc49062b6dcf2"}'
+}
+POST /api/transactions 201 in 764ms (next.js: 3ms, application-code: 762ms)
+[Appresso] POST /api/transactions received {
+requestId: 'a65e17bf-5973-41b2-ad8e-493971bda3da',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'a65e17bf-5973-41b2-ad8e-493971bda3da',
+bodyLength: 203,
+truncated: false,
+body: '{"idTxn": 10037, "user": "ycrt@hotmail.com", "date": "2020-03-25T04:49:39.354Z", "value": 3274152, "paymentMethod": "Efectivo", "hash": "afd5a39fce75e4d323b32278c6e9a92f7818787ab8d4329c6691746fb5d9cd97"}'
+}
+POST /api/transactions 201 in 847ms (next.js: 3ms, application-code: 844ms)
+[Appresso] POST /api/transactions received {
+requestId: 'c27b8cf3-8492-408b-9ab7-be72f326201f',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'c27b8cf3-8492-408b-9ab7-be72f326201f',
+bodyLength: 196,
+truncated: false,
+body: '{"idTxn": 10134, "user": "GvZxnk78", "date": "2016-02-06T15:18:31.643Z", "value": 1549978, "paymentMethod": "Apple Pay", "hash": "d877ed80e684ba9a7b629685d19b0f0d105b6270c954c9f961123a762684dad4"}'
+}
+POST /api/transactions 201 in 802ms (next.js: 3ms, application-code: 799ms)
+[Appresso] POST /api/transactions received {
+requestId: '88e1f3a0-bd0e-42f8-873a-c1fe379e76bc',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '88e1f3a0-bd0e-42f8-873a-c1fe379e76bc',
+bodyLength: 178,
+truncated: false,
+body: '{"idTxn": 10005, "user": "uckuxyxop@empresa.com", "date": "2024-12-23T22:33:26.266Z", "value": 4792618, "paymentMethod": "Google Pay", "hash": "ca0e59d2bcfb45049168a69adfdc2fe0"}'
+}
+POST /api/transactions 201 in 866ms (next.js: 3ms, application-code: 863ms)
+[Appresso] POST /api/transactions received {
+requestId: '42305eea-5c61-4f5e-9511-6342bc9c9c33',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '42305eea-5c61-4f5e-9511-6342bc9c9c33',
+bodyLength: 210,
+truncated: false,
+body: '{"idTxn": 10011, "user": "qawlev@outlook.com", "date": "2022-07-27T20:18:51.453Z", "value": 1313570, "paymentMethod": "Transferencia", "hash": "6fa75213f5de235ad258bbc1788eab3a5156ae325e1cc75d0cb3851a246eb7e9"}'
+}
+POST /api/transactions 201 in 783ms (next.js: 2ms, application-code: 781ms)
+[Appresso] POST /api/transactions received {
+requestId: '9d6230f4-f66c-462f-85f3-1a426ef8acbb',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '9d6230f4-f66c-462f-85f3-1a426ef8acbb',
+bodyLength: 203,
+truncated: false,
+body: '{"idTxn": 10092, "user": "olqa@outlook.com", "date": "2015-09-22T10:57:02.239Z", "value": 1321474, "paymentMethod": "Efectivo", "hash": "67a80f8dc196568c6db493a58bb2352745921aa7d45b06e0f77f40728fafc470"}'
+}
+POST /api/transactions 201 in 943ms (next.js: 5ms, application-code: 938ms)
+[Appresso] POST /api/transactions received {
+requestId: '05df4eb7-8681-4088-b5d5-0cdacb69cbc9',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '05df4eb7-8681-4088-b5d5-0cdacb69cbc9',
+bodyLength: 198,
+truncated: false,
+body: '{"idTxn": 10137, "user": "undefined", "date": "2022-08-15T19:08:58.350Z", "value": 1587927, "paymentMethod": "Google Pay", "hash": "c3afd853170b091e8ee4b2d680697471c37160cc0051fa890e91c881654984c8"}'
+}
+POST /api/transactions 201 in 788ms (next.js: 2ms, application-code: 785ms)
+[Appresso] POST /api/transactions received {
+requestId: 'd2c54e73-3f7f-4f8c-9b16-7b4653e213df',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'd2c54e73-3f7f-4f8c-9b16-7b4653e213df',
+bodyLength: 203,
+truncated: false,
+body: '{"idTxn": 10117, "user": "qvumgtuy@outlook.com", "date": "2025-03-23T02:31:30.239Z", "value": true, "paymentMethod": "Tarjeta", "hash": "6ec9ab3949b41b5c0340d9ae39f8ce167b6c5451c769a3268edcb01432ab911c"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'd2c54e73-3f7f-4f8c-9b16-7b4653e213df',
+bodyType: 'object',
+details: [
+{
+path: 'value',
+code: 'invalid_type',
+message: 'Invalid input: expected number, received boolean'
+}
+]
+}
+POST /api/transactions 422 in 15ms (next.js: 1.8ms, application-code: 13ms)
+[Appresso] POST /api/transactions received {
+requestId: '7a5522f4-7dcf-4898-8f77-5b5550881b2b',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '7a5522f4-7dcf-4898-8f77-5b5550881b2b',
+bodyLength: 214,
+truncated: false,
+body: '{"idTxn": "lQvQ77Tf", "user": "zlfmqvcaam@gmail.com", "date": "2025-02-15T06:41:30.787Z", "value": 4983310, "paymentMethod": "Google Pay", "hash": "99edca15dc63dafffea9385d80494f8de11f4091ba1a75ae1463f4b94e145ee6"}'
+}
+POST /api/transactions 201 in 812ms (next.js: 3ms, application-code: 808ms)
+[Appresso] POST /api/transactions received {
+requestId: '9971a389-d782-4585-a0a2-5889ccc8c63c',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '9971a389-d782-4585-a0a2-5889ccc8c63c',
+bodyLength: 202,
+truncated: false,
+body: '{"idTxn": 10089, "user": "avfmdfy@gmail.com", "date": "2021-01-20T16:17:13.511Z", "value": 311009, "paymentMethod": "Tarjeta", "hash": "9ff2453989523002d7c5582c0789270a41d2470ca393b7cd104af0d4dbca7ae4"}'
+}
+POST /api/transactions 201 in 777ms (next.js: 5ms, application-code: 772ms)
+[Appresso] POST /api/transactions received {
+requestId: '7b9fdfcc-6bb0-4318-b7cb-53844ee0b40b',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '7b9fdfcc-6bb0-4318-b7cb-53844ee0b40b',
+bodyLength: 209,
+truncated: false,
+body: '{"idTxn": 10122, "user": "yncuxvfwfv@yahoo.com", "date": "2023-08-18T03:29:43.811Z", "value": 1280877, "paymentMethod": "Google Pay", "hash": "a632d209cebdfdc16d296535022a966c39c4e170f8401bb99890671154229b2d"}'
+}
+POST /api/transactions 201 in 792ms (next.js: 2ms, application-code: 790ms)
+[Appresso] POST /api/transactions received {
+requestId: '37d2a32f-dd29-40fe-b997-a5e7e536e85d',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '37d2a32f-dd29-40fe-b997-a5e7e536e85d',
+bodyLength: 206,
+truncated: false,
+body: '{"idTxn": 10010, "user": "qawlev@outlook.com", "date": "2022-07-27T20:18:50.453Z", "value": 3622329, "paymentMethod": "Apple Pay", "hash": "8e6e9f2f72e2234eb42508eb1e8b45d26287dc4f6447bf5384c7c0b579d98a79"}'
+}
+POST /api/transactions 201 in 821ms (next.js: 4ms, application-code: 818ms)
+[Appresso] POST /api/transactions received {
+requestId: '607a5f4c-7c61-447d-b1a5-139107efcb0d',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '607a5f4c-7c61-447d-b1a5-139107efcb0d',
+bodyLength: 183,
+truncated: false,
+body: '{"idTxn": 10081, "user": "utcdqs@outlook.com", "date": "", "value": 2517164, "paymentMethod": "Google Pay", "hash": "d88502b3bd4d1b6fe20214e8b51341bdbe8bc9b023f981d1a7b8229d5a7264a3"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '607a5f4c-7c61-447d-b1a5-139107efcb0d',
+bodyType: 'object',
+details: [
+{
+path: 'date',
+code: 'custom',
+message: 'Usa una fecha y hora ISO 8601 válida con Z, offset horario o sin zona.'
+}
+]
+}
+POST /api/transactions 422 in 17ms (next.js: 3ms, application-code: 14ms)
+[Appresso] POST /api/transactions received {
+requestId: '8c8449bb-0619-4512-9668-32ca50a6f7f1',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '8c8449bb-0619-4512-9668-32ca50a6f7f1',
+bodyLength: 214,
+truncated: false,
+body: '{"idTxn": 10150, "user": "shwbrdzcal@empresa.com", "date": "2025-09-03T05:40:41.491Z", "value": 2501564, "paymentMethod": "Transferencia", "hash": "80b61b6e8f8c1c62808817b9e29499aa1fdece62188f7ea053ff38f8f4ec5b72"}'
+}
+POST /api/transactions 201 in 801ms (next.js: 4ms, application-code: 797ms)
+[Appresso] POST /api/transactions received {
+requestId: '834dc273-b261-416f-99b6-0807f4955085',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '834dc273-b261-416f-99b6-0807f4955085',
+bodyLength: 184,
+truncated: false,
+body: '{"idTxn": "WsPzjLIG", "user": "qawlev@outlook.com", "date": "", "value": 2418394, "paymentMethod": "Paypal", "hash": "c7544cf622139a64d03213999b66a028d08855185372812d531738694854f304"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '834dc273-b261-416f-99b6-0807f4955085',
+bodyType: 'object',
+details: [
+{
+path: 'date',
+code: 'custom',
+message: 'Usa una fecha y hora ISO 8601 válida con Z, offset horario o sin zona.'
+}
+]
+}
+POST /api/transactions 422 in 18ms (next.js: 3ms, application-code: 15ms)
+[Appresso] POST /api/transactions received {
+requestId: 'c04992db-ea44-45b0-859b-a3aff6865f98',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'c04992db-ea44-45b0-859b-a3aff6865f98',
+bodyLength: 209,
+truncated: false,
+body: '{"idTxn": 10115, "user": "xmfgixxmm@hotmail.com", "date": "2025-02-14T19:23:25.252Z", "value": "null", "paymentMethod": "Google Pay", "hash": "eb0f8931af11d6fd5ffbf5cab807170c0ef22c1e82c9d4e2f98899c5be868828"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'c04992db-ea44-45b0-859b-a3aff6865f98',
+bodyType: 'object',
+details: [
+{
+path: 'value',
+code: 'invalid_type',
+message: 'Invalid input: expected number, received string'
+}
+]
+}
+POST /api/transactions 422 in 15ms (next.js: 3ms, application-code: 11ms)
+[Appresso] POST /api/transactions received {
+requestId: '48b071a3-9870-430a-93bb-ac6ed9a64f1a',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '48b071a3-9870-430a-93bb-ac6ed9a64f1a',
+bodyLength: 206,
+truncated: false,
+body: '{"idTxn": 10078, "user": "xmfgixxmm@hotmail.com", "date": "2018-08-29T10:13:53.429Z", "value": 1901993, "paymentMethod": "Paypal", "hash": "57a01016ee319de77ae4e13e710c99ee46373cb85a77219bc9f1aaf0537c4c58"}'
+}
+POST /api/transactions 201 in 1279ms (next.js: 3ms, application-code: 1276ms)
+[Appresso] POST /api/transactions received {
+requestId: '0316cb1f-47b0-42e7-aa0d-6e49543cf012',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '0316cb1f-47b0-42e7-aa0d-6e49543cf012',
+bodyLength: 207,
+truncated: false,
+body: '{"idTxn": 10111, "user": "hzdtsyeqq@outlook.com", "date": "2016-06-13T04:42:56.124Z", "value": 4912046, "paymentMethod": "Tarjeta", "hash": "858452ec679f6b6496db8fd7ebb9ffbeb3a593877a6ca40517856c77fca00ab6"}'
+}
+POST /api/transactions 201 in 1005ms (next.js: 2ms, application-code: 1002ms)
+[Appresso] POST /api/transactions received {
+requestId: 'ea55ef61-338f-4b11-9c34-5249725b8c6c',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'ea55ef61-338f-4b11-9c34-5249725b8c6c',
+bodyLength: 198,
+truncated: false,
+body: '{"idTxn": 10131, "user": "undefined", "date": "2019-10-25T18:42:47.076Z", "value": 1259554, "paymentMethod": "Google Pay", "hash": "b89be135f0c4b3787a93309fb9b10221647a0c8690b3230dc5ee0136a47dd479"}'
+}
+POST /api/transactions 201 in 949ms (next.js: 3ms, application-code: 947ms)
+[Appresso] POST /api/transactions received {
+requestId: '051dd9b1-17ac-49fa-a8d1-1ab553372bde',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '051dd9b1-17ac-49fa-a8d1-1ab553372bde',
+bodyLength: 207,
+truncated: false,
+body: '{"idTxn": 10060, "user": "kpyqqysw@empresa.com", "date": "2020-06-25T20:49:31.578Z", "value": 4173532, "paymentMethod": "Efectivo", "hash": "793dd643027d55c7fcec813fdd40aa1d39114ec962357cbfa1acca991f3aca17"}'
+}
+POST /api/transactions 201 in 916ms (next.js: 3ms, application-code: 913ms)
+[Appresso] POST /api/transactions received {
+requestId: '41bf909d-badc-4c42-8d13-fd3ac6b65a33',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '41bf909d-badc-4c42-8d13-fd3ac6b65a33',
+bodyLength: 207,
+truncated: false,
+body: '{"idTxn": 10104, "user": "kpyqqysw@empresa.com", "date": "2019-04-19T15:18:28.292Z", "value": 274298, "paymentMethod": "Apple Pay", "hash": "47bd19244b85ac5f80621dd870dd933997568e9eb4ba1b1edd0b232d75fd457c"}'
+}
+POST /api/transactions 201 in 888ms (next.js: 3ms, application-code: 885ms)
+[Appresso] POST /api/transactions received {
+requestId: '1ac2213b-5790-4449-a965-d69e454628c3',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '1ac2213b-5790-4449-a965-d69e454628c3',
+bodyLength: 201,
+truncated: false,
+body: '{"idTxn": 10086, "user": "ahsrdh@yahoo.com", "date": "2015-08-03T02:16:59.152Z", "value": 2584929, "paymentMethod": "Paypal", "hash": "07c96b879ddccb9053f9c6088ede8ad8df92e3a17bf7d5853e2f36537c077d6c"}'
+}
+POST /api/transactions 201 in 854ms (next.js: 2ms, application-code: 851ms)
+[Appresso] POST /api/transactions received {
+requestId: '44e2ef46-1876-46a6-9425-5d2bf9e2bffe',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '44e2ef46-1876-46a6-9425-5d2bf9e2bffe',
+bodyLength: 204,
+truncated: false,
+body: '{"idTxn": 10152, "user": "ahsrdh@yahoo.com", "date": "2024-12-11T21:44:24.484Z", "value": 1555029, "paymentMethod": "Apple Pay", "hash": "ab8fb6b84c8107f55511aa53576e1abeae6230544deb57b75531a55bfffebd5b"}'
+}
+POST /api/transactions 201 in 962ms (next.js: 4ms, application-code: 958ms)
+[Appresso] POST /api/transactions received {
+requestId: '2787dcdd-431b-4799-bb23-761bec3af86c',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '2787dcdd-431b-4799-bb23-761bec3af86c',
+bodyLength: 206,
+truncated: false,
+body: '{"idTxn": 10048, "user": "wruvvvz@outlook.com", "date": "2023-09-14T16:53:30.430Z", "value": "", "paymentMethod": "Transferencia", "hash": "9d17cdcf24e86ad27263350f66185713a858e2dd5b689417a9cf4681d3816d72"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '2787dcdd-431b-4799-bb23-761bec3af86c',
+bodyType: 'object',
+details: [
+{
+path: 'value',
+code: 'invalid_type',
+message: 'Invalid input: expected number, received string'
+}
+]
+}
+POST /api/transactions 422 in 16ms (next.js: 3ms, application-code: 13ms)
+[Appresso] POST /api/transactions received {
+requestId: '867319b7-d3ef-4d8d-8ef8-e4b62f0f792f',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '867319b7-d3ef-4d8d-8ef8-e4b62f0f792f',
+bodyLength: 203,
+truncated: false,
+body: '{"idTxn": 10144, "user": "isxmlsav@outlook.com", "date": "2023-04-18T01:35:36.050Z", "value": 26504, "paymentMethod": "Paypal", "hash": "15e85ae94cfee22245dd0c33ef20ce6dce68924fee35409b7a021582522c7446"}'
+}
+POST /api/transactions 201 in 849ms (next.js: 3ms, application-code: 846ms)
+[Appresso] POST /api/transactions received {
+requestId: '9bcc0cfd-2f17-410d-a3dc-7f09aec05528',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '9bcc0cfd-2f17-410d-a3dc-7f09aec05528',
+bodyLength: 188,
+truncated: false,
+body: '{"idTxn": 0, "user": "null", "date": "2017-03-26T07:06:14.676Z", "value": 3909380, "paymentMethod": "Apple Pay", "hash": "2e5d8c4ca615710f8de39cdeee90b3121fb91b527b0765819abbcc2a9bafe467"}'
+}
+POST /api/transactions 201 in 851ms (next.js: 4ms, application-code: 848ms)
+[Appresso] POST /api/transactions received {
+requestId: 'a810d978-e381-4ba5-b147-19030550f149',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'a810d978-e381-4ba5-b147-19030550f149',
+bodyLength: 208,
+truncated: false,
+body: '{"idTxn": 10121, "user": "lbyqnjmajb@empresa.com", "date": "2026-04-23T16:14:35.176Z", "value": 3789511, "paymentMethod": "Tarjeta", "hash": "654d968d35da8f69ba18edb578ebcecdb0c83c7d51c0d85b3bbe3c109586fed7"}'
+}
+POST /api/transactions 201 in 876ms (next.js: 3ms, application-code: 873ms)
+[Appresso] POST /api/transactions received {
+requestId: 'e467afe0-575a-4463-b0dd-23bbc84fb4a5',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'e467afe0-575a-4463-b0dd-23bbc84fb4a5',
+bodyLength: 212,
+truncated: false,
+body: '{"idTxn": 10077, "user": "isxmlsav@outlook.com", "date": "2018-12-10T05:13:11.067Z", "value": 4893315, "paymentMethod": "Transferencia", "hash": "a77e922feb1fa8527cc8deaad5d70c58b881b20c291ebe1e5fcf0cdf483ec6b3"}'
+}
+POST /api/transactions 201 in 913ms (next.js: 3ms, application-code: 910ms)
+[Appresso] POST /api/transactions received {
+requestId: '105e8e04-5c48-42de-93bf-d0868934eaf5',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '105e8e04-5c48-42de-93bf-d0868934eaf5',
+bodyLength: 205,
+truncated: false,
+body: '{"idTxn": 10043, "user": "mkong@outlook.com", "date": "2019-10-28T13:12:57.534Z", "value": 276425, "paymentMethod": "Google Pay", "hash": "f4d9db80c3a4fbb1160347052b50dc8b656f6cdc9436fa7cab03fef011954474"}'
+}
+POST /api/transactions 201 in 903ms (next.js: 5ms, application-code: 898ms)
+[Appresso] POST /api/transactions received {
+requestId: 'a31f894b-0df3-427b-b9cb-ef78f4b50f68',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'a31f894b-0df3-427b-b9cb-ef78f4b50f68',
+bodyLength: 178,
+truncated: false,
+body: '{"idTxn": 10141, "user": "nniddl@empresa.com", "date": "2020-02-06T05:52:15.088Z", "value": 1404705, "paymentMethod": "Transferencia", "hash": "d99ed2492b404dedbacd33334b3fdd80"}'
+}
+POST /api/transactions 201 in 923ms (next.js: 3ms, application-code: 920ms)
+[Appresso] POST /api/transactions received {
+requestId: '6a4f8e5d-2226-408e-b30d-cb5ad09ca32c',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '6a4f8e5d-2226-408e-b30d-cb5ad09ca32c',
+bodyLength: 208,
+truncated: false,
+body: '{"idTxn": 10127, "user": "qvumgtuy@outlook.com", "date": "2025-06-19T12:00:23.027Z", "value": 2722816, "paymentMethod": "Apple Pay", "hash": "01b66ba11b2bb5f47939a6607e59f7206bcacadd1711ed87e14b950d73a01061"}'
+}
+POST /api/transactions 201 in 858ms (next.js: 2ms, application-code: 856ms)
+[Appresso] POST /api/transactions received {
+requestId: '1870721d-75ce-4a22-aa5a-f547294eb47f',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '1870721d-75ce-4a22-aa5a-f547294eb47f',
+bodyLength: 168,
+truncated: false,
+body: '{"idTxn": 10142, "user": 459081, "date": "undefined", "value": 4538430, "paymentMethod": "", "hash": "e7d651ec18bb803a62dbec0d5bbf79e63675a840f14002bcd9c5bd0024ae2281"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '1870721d-75ce-4a22-aa5a-f547294eb47f',
+bodyType: 'object',
+details: [
+{
+path: 'user',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received number'
+},
+{
+path: 'date',
+code: 'custom',
+message: 'Usa una fecha y hora ISO 8601 válida con Z, offset horario o sin zona.'
+}
+]
+}
+POST /api/transactions 422 in 15ms (next.js: 3ms, application-code: 11ms)
+[Appresso] POST /api/transactions received {
+requestId: 'e3eb478d-ef5c-4203-b6f0-e60f18e578e3',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'e3eb478d-ef5c-4203-b6f0-e60f18e578e3',
+bodyLength: 207,
+truncated: false,
+body: '{"idTxn": 10126, "user": "hzdtsyeqq@outlook.com", "date": "2019-04-01T20:34:52.190Z", "value": 1414767, "paymentMethod": "Tarjeta", "hash": "1eb91adfc2ec40c4d7d46cce99015072102d14212757b375882a6452b3f8972c"}'
+}
+POST /api/transactions 201 in 920ms (next.js: 2ms, application-code: 918ms)
+[Appresso] POST /api/transactions received {
+requestId: '1f9f313f-4d0f-46df-b829-4a3e72aff5d1',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '1f9f313f-4d0f-46df-b829-4a3e72aff5d1',
+bodyLength: 202,
+truncated: false,
+body: '{"idTxn": 10154, "user": "mzoenox@yahoo.com", "date": "2025-06-10T06:01:11.398Z", "value": 4606346, "paymentMethod": "Paypal", "hash": "53495b4fc0d95d751383df3e1d48c9ec86cda2492de9e6d0c669d9049f1d732c"}'
+}
+POST /api/transactions 201 in 923ms (next.js: 3ms, application-code: 920ms)
+[Appresso] POST /api/transactions received {
+requestId: '9ba3834e-b154-479f-9ca2-ecd0fda82fa5',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '9ba3834e-b154-479f-9ca2-ecd0fda82fa5',
+bodyLength: 201,
+truncated: false,
+body: '{"idTxn": 10034, "user": "izghz@gmail.com", "date": "2023-11-13T07:11:13.348Z", "value": 2824207, "paymentMethod": "Tarjeta", "hash": "a61a054fee861e6da700b78ed1800a681Z8067dG865eeda5763fbfac9e16a04f"}'
+}
+POST /api/transactions 201 in 801ms (next.js: 3ms, application-code: 797ms)
+[Appresso] POST /api/transactions received {
+requestId: '75791e13-45f1-4423-b218-241f3f4662b1',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '75791e13-45f1-4423-b218-241f3f4662b1',
+bodyLength: 201,
+truncated: false,
+body: '{"idTxn": 10128, "user": "lbyqnjmajb@empresa.com", "date": "2017-06-09T07:11:27.773Z", "value": 0, "paymentMethod": "Paypal", "hash": "329fe1323a91bcd98b3beafd744c41de2b3bc5516f48da71179b991cd4592a8f"}'
+}
+POST /api/transactions 201 in 826ms (next.js: 3ms, application-code: 823ms)
+[Appresso] POST /api/transactions received {
+requestId: '2162b495-8718-47c7-8e1c-ed85ad76e6a4',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '2162b495-8718-47c7-8e1c-ed85ad76e6a4',
+bodyLength: 207,
+truncated: false,
+body: '{"idTxn": 10098, "user": "pyysvxo@hotmail.com", "date": "2026-01-31T05:12:36.866Z", "value": 734184, "paymentMethod": "Google Pay", "hash": "47141a5c46200d85849dd323e57ca7874876cf9ff063babc6eeded8086fc6ca7"}'
+}
+POST /api/transactions 201 in 787ms (next.js: 2ms, application-code: 785ms)
+[Appresso] POST /api/transactions received {
+requestId: 'ccad985e-4202-4436-bf43-6c5834805b72',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'ccad985e-4202-4436-bf43-6c5834805b72',
+bodyLength: 169,
+truncated: false,
+body: '{"idTxn": 10107, "user": 0, "date": -464194, "value": 4750542, "paymentMethod": "Google Pay", "hash": "1165b5cef84b00e8c428862f8c194435a34d2e9d78564bb7230b1a43d3c03fc7"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'ccad985e-4202-4436-bf43-6c5834805b72',
+bodyType: 'object',
+details: [
+{
+path: 'user',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received number'
+},
+{
+path: 'date',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received number'
+}
+]
+}
+POST /api/transactions 422 in 17ms (next.js: 3ms, application-code: 14ms)
+[Appresso] POST /api/transactions received {
+requestId: '4543cdf8-7a29-453e-98eb-9cded74291d1',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '4543cdf8-7a29-453e-98eb-9cded74291d1',
+bodyLength: 187,
+truncated: false,
+body: '{"idTxn": 10080, "user": "nniddl@empresa.com", "date": "null", "value": 2171293, "paymentMethod": "Google Pay", "hash": "750613cd28dcd55c122e290216f4c545b5937eefbbf638c0b43a2e72fc5ef330"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '4543cdf8-7a29-453e-98eb-9cded74291d1',
+bodyType: 'object',
+details: [
+{
+path: 'date',
+code: 'custom',
+message: 'Usa una fecha y hora ISO 8601 válida con Z, offset horario o sin zona.'
+}
+]
+}
+POST /api/transactions 422 in 22ms (next.js: 4ms, application-code: 17ms)
+[Appresso] POST /api/transactions received {
+requestId: 'aef1b373-6ce6-497c-9148-32522f12a889',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'aef1b373-6ce6-497c-9148-32522f12a889',
+bodyLength: 195,
+truncated: false,
+body: '{"idTxn": "null", "user": "FZqwNGqY", "date": "2024-05-11T19:55:27.106Z", "value": 1815759, "paymentMethod": "Tarjeta", "hash": "54ccb4be98c89a6849d762c003aec6a7f0eed2529283e437d09a3060a768095c"}'
+}
+POST /api/transactions 201 in 1419ms (next.js: 4ms, application-code: 1416ms)
+[Appresso] POST /api/transactions received {
+requestId: '007413af-f990-472f-8ea0-e62088284c93',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '007413af-f990-472f-8ea0-e62088284c93',
+bodyLength: 204,
+truncated: false,
+body: '{"idTxn": 10135, "user": "eyzvw@gmail.com", "date": "2015-03-28T23:44:57.861Z", "value": 3429924, "paymentMethod": "Google Pay", "hash": "7a878befd06b343001fd9e2bf57d4d4b0896673793a1f0ab918756d2e438205c"}'
+}
+POST /api/transactions 201 in 972ms (next.js: 5ms, application-code: 967ms)
+[Appresso] POST /api/transactions received {
+requestId: 'e3cb93c3-53e5-485b-8b74-c5cfa2b13089',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'e3cb93c3-53e5-485b-8b74-c5cfa2b13089',
+bodyLength: 192,
+truncated: false,
+body: '{"idTxn": 10061, "user": "isxmlsav@outlook.com", "date": "undefined", "value": 3894389, "paymentMethod": "Efectivo", "hash": "e1594117ea9a55a4ac973383d161f0b5b9506462940cfb140b62dac0ac9a9b54"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'e3cb93c3-53e5-485b-8b74-c5cfa2b13089',
+bodyType: 'object',
+details: [
+{
+path: 'date',
+code: 'custom',
+message: 'Usa una fecha y hora ISO 8601 válida con Z, offset horario o sin zona.'
+}
+]
+}
+POST /api/transactions 422 in 29ms (next.js: 4ms, application-code: 25ms)
+[Appresso] POST /api/transactions received {
+requestId: '340e783d-b10f-4f75-9871-b69afce3c253',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '340e783d-b10f-4f75-9871-b69afce3c253',
+bodyLength: 196,
+truncated: false,
+body: '{"idTxn": 10155, "user": "undefined", "date": "2025-12-04T11:20:26.418Z", "value": 3325497, "paymentMethod": "Efectivo", "hash": "88a358d9ce4c5fbd5b37045369d81c62ae55c631f2214912edb55c1a1774a751"}'
+}
+POST /api/transactions 201 in 937ms (next.js: 3ms, application-code: 934ms)
+[Appresso] POST /api/transactions received {
+requestId: '376bff2e-8e25-47c8-8cb3-58855f141586',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '376bff2e-8e25-47c8-8cb3-58855f141586',
+bodyLength: 183,
+truncated: false,
+body: '{"idTxn": 10042, "user": "mkong@outlook.com", "date": "undefined", "value": "zFHZDLb0", "paymentMethod": 0, "hash": "8e014c24a37e3f551bc3837e3de106bef14d457802510219c48d7ee6d1cfd168"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '376bff2e-8e25-47c8-8cb3-58855f141586',
+bodyType: 'object',
+details: [
+{
+path: 'date',
+code: 'custom',
+message: 'Usa una fecha y hora ISO 8601 válida con Z, offset horario o sin zona.'
+},
+{
+path: 'value',
+code: 'invalid_type',
+message: 'Invalid input: expected number, received string'
+},
+{
+path: 'paymentMethod',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received number'
+}
+]
+}
+POST /api/transactions 422 in 22ms (next.js: 4ms, application-code: 18ms)
+[Appresso] POST /api/transactions received {
+requestId: '733e6617-b191-4251-afdf-9075d0a64924',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '733e6617-b191-4251-afdf-9075d0a64924',
+bodyLength: 194,
+truncated: false,
+body: '{"idTxn": 0, "user": "twdgl@hotmail.com", "date": "2025-08-24T12:39:58.473Z", "value": 1831891, "paymentMethod": true, "hash": "a392bc370c9d5446b5fa2a4e44cbf6ce0f5ecaf9e9be1b33ee9c2a942c3abcef"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '733e6617-b191-4251-afdf-9075d0a64924',
+bodyType: 'object',
+details: [
+{
+path: 'paymentMethod',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received boolean'
+}
+]
+}
+POST /api/transactions 422 in 14ms (next.js: 3ms, application-code: 12ms)
+[Appresso] POST /api/transactions received {
+requestId: 'b350d71a-8786-4226-b98d-d4f0a99ad8cd',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'b350d71a-8786-4226-b98d-d4f0a99ad8cd',
+bodyLength: 186,
+truncated: false,
+body: '{"idTxn": 10066, "user": "gfxgfrga@outlook.com", "date": "null", "value": 3370415, "paymentMethod": "Tarjeta", "hash": "548696596702e4daf31a2e0449729d8f6ac00882199b296bbe44780ea54fa274"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'b350d71a-8786-4226-b98d-d4f0a99ad8cd',
+bodyType: 'object',
+details: [
+{
+path: 'date',
+code: 'custom',
+message: 'Usa una fecha y hora ISO 8601 válida con Z, offset horario o sin zona.'
+}
+]
+}
+POST /api/transactions 422 in 17ms (next.js: 2ms, application-code: 15ms)
+[Appresso] POST /api/transactions received {
+requestId: 'c5eb1e20-9787-4c35-be15-dfd2817fded2',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'c5eb1e20-9787-4c35-be15-dfd2817fded2',
+bodyLength: 205,
+truncated: false,
+body: '{"idTxn": 10027, "user": "nywyuye@outlook.com", "date": "2019-08-23T23:54:42.575Z", "value": 2909010, "paymentMethod": "Tarjeta", "hash": "fc206f27e579e3d4a30a6dc31e40c31a3cc23a8440238fc02597bc42f7bbca62"}'
+}
+POST /api/transactions 201 in 1232ms (next.js: 1.9ms, application-code: 1230ms)
+[Appresso] POST /api/transactions received {
+requestId: '3ced10d5-4866-4f47-ad26-3cbb103431e6',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '3ced10d5-4866-4f47-ad26-3cbb103431e6',
+bodyLength: 194,
+truncated: false,
+body: '{"idTxn": 10116, "user": "undefined", "date": "2022-09-20T17:32:34.531Z", "value": 4213043, "paymentMethod": "Paypal", "hash": "548094a07889b63cdda53586af40fef1baf6dae656f7badb126a18569e8425ab"}'
+}
+POST /api/transactions 201 in 1223ms (next.js: 3ms, application-code: 1220ms)
+[Appresso] POST /api/transactions received {
+requestId: '38857194-5e42-477d-8f2a-ab9e3de0c1b6',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '38857194-5e42-477d-8f2a-ab9e3de0c1b6',
+bodyLength: 209,
+truncated: false,
+body: '{"idTxn": 10073, "user": "qvumgtuy@outlook.com", "date": "2016-11-03T09:44:59.649Z", "value": 2192498, "paymentMethod": "Google Pay", "hash": "b63e82f8488b378d1edc7d8e86652e55fb15b5cd6b56b923beb9ccf4dd765e15"}'
+}
+POST /api/transactions 201 in 879ms (next.js: 4ms, application-code: 876ms)
+[Appresso] POST /api/transactions received {
+requestId: 'bdba7ca5-774b-4ccb-a0fe-0cc03653065d',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'bdba7ca5-774b-4ccb-a0fe-0cc03653065d',
+bodyLength: 203,
+truncated: false,
+body: '{"idTxn": 10021, "user": "clya@hotmail.com", "date": "2021-06-16T22:16:32.089Z", "value": 4562401, "paymentMethod": "Efectivo", "hash": "61a472c2f30630bf668547ff5e09c4d72c88d9a00d14e2356513ebd5c27d5814"}'
+}
+POST /api/transactions 201 in 828ms (next.js: 2ms, application-code: 826ms)
+[Appresso] POST /api/transactions received {
+requestId: '211ec849-e0c7-4813-b9b7-905948cd0ef7',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '211ec849-e0c7-4813-b9b7-905948cd0ef7',
+bodyLength: 189,
+truncated: false,
+body: '{"idTxn": 10028, "user": "nywyuye@outlook.com", "date": "0XgVgQ31", "value": 1553943, "paymentMethod": "Tarjeta", "hash": "8dc004d8b4b5262b0fa6127b3fbf4296e44d05da3e48042404d5eea083974ff7"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '211ec849-e0c7-4813-b9b7-905948cd0ef7',
+bodyType: 'object',
+details: [
+{
+path: 'date',
+code: 'custom',
+message: 'Usa una fecha y hora ISO 8601 válida con Z, offset horario o sin zona.'
+}
+]
+}
+POST /api/transactions 422 in 17ms (next.js: 2ms, application-code: 15ms)
+[Appresso] POST /api/transactions received {
+requestId: '689d2a2a-2ff8-4d7c-82fa-964aca5fb927',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '689d2a2a-2ff8-4d7c-82fa-964aca5fb927',
+bodyLength: 143,
+truncated: false,
+body: '{"idTxn": 10032, "user": "nywyuye@outlook.com", "date": "2019-08-23T23:54:47.575Z", "value": 4228215, "paymentMethod": "Apple Pay", "hash": ""}'
+}
+POST /api/transactions 201 in 843ms (next.js: 3ms, application-code: 840ms)
+[Appresso] POST /api/transactions received {
+requestId: '0ff571dd-1ef3-4123-8a62-638649cadb2c',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '0ff571dd-1ef3-4123-8a62-638649cadb2c',
+bodyLength: 191,
+truncated: false,
+body: '{"idTxn": 10071, "user": 999027, "date": "2017-01-23T15:58:29.763Z", "value": 2972022, "paymentMethod": "Efectivo", "hash": "438bd93c39990a5375da5d23869d4603f75a09865a362e85254fce2918059c79"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '0ff571dd-1ef3-4123-8a62-638649cadb2c',
+bodyType: 'object',
+details: [
+{
+path: 'user',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received number'
+}
+]
+}
+POST /api/transactions 422 in 19ms (next.js: 3ms, application-code: 16ms)
+[Appresso] POST /api/transactions received {
+requestId: '9c1f1c99-379d-428d-b2c7-a8369c821b17',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '9c1f1c99-379d-428d-b2c7-a8369c821b17',
+bodyLength: 210,
+truncated: false,
+body: '{"idTxn": 10002, "user": "uckuxyxop@empresa.com", "date": "2024-12-23T22:33:23.266Z", "value": 4624266, "paymentMethod": "Google Pay", "hash": "b60c4f01e49032de2ce350f9a88afaebd0f835e9417e57d96fbd2d6b05ff8b5f"}'
+}
+POST /api/transactions 201 in 828ms (next.js: 2ms, application-code: 825ms)
+[Appresso] POST /api/transactions received {
+requestId: '0d3c0e34-c3db-46fd-8bcb-d373ef392808',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '0d3c0e34-c3db-46fd-8bcb-d373ef392808',
+bodyLength: 201,
+truncated: false,
+body: '{"idTxn": 10024, "user": "gvilz@yahoo.com", "date": "2026-09-22T04:19:12.834Z", "value": 4824803, "paymentMethod": "Tarjeta", "hash": "90cefd4347037f770de213c8027f581065fca8fa2b3cb465f599aab5ce416698"}'
+}
+POST /api/transactions 201 in 850ms (next.js: 2ms, application-code: 848ms)
+[Appresso] POST /api/transactions received {
+requestId: 'e8510139-10cc-4258-bb25-9562284f2c40',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'e8510139-10cc-4258-bb25-9562284f2c40',
+bodyLength: 207,
+truncated: false,
+body: '{"idTxn": 10114, "user": "qarxosv@outlook.com", "date": "2026-02-27T15:01:00.293Z", "value": 840179, "paymentMethod": "Google Pay", "hash": "30984afb88774ccc04f49111a662ae13057035dc7e16a119838d3eb8cead592c"}'
+}
+POST /api/transactions 201 in 835ms (next.js: 4ms, application-code: 830ms)
+[Appresso] POST /api/transactions received {
+requestId: '30daf4c6-d587-4cad-8ae5-cdafe753d49d',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '30daf4c6-d587-4cad-8ae5-cdafe753d49d',
+bodyLength: 210,
+truncated: false,
+body: '{"idTxn": 10105, "user": "zcaozn@hotmail.com", "date": "2021-09-23T16:09:43.828Z", "value": 1284379, "paymentMethod": "Transferencia", "hash": "7f2224cba86a28f2fb458790c803948f2403352208509ceef5186c81e5cc2fbf"}'
+}
+POST /api/transactions 201 in 879ms (next.js: 3ms, application-code: 876ms)
+[Appresso] POST /api/transactions received {
+requestId: '43574aeb-2f0c-4a22-9902-e7ad41e3a21d',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '43574aeb-2f0c-4a22-9902-e7ad41e3a21d',
+bodyLength: 200,
+truncated: false,
+body: '{"idTxn": 10094, "user": "eyzvw@gmail.com", "date": "2019-04-29T16:36:48.140Z", "value": 3487206, "paymentMethod": "Paypal", "hash": "75ec6765341d6f1c2d492920a1e575da37bdb0ed4de74ed0a082f1fc6410ce48"}'
+}
+POST /api/transactions 201 in 835ms (next.js: 3ms, application-code: 832ms)
+[Appresso] POST /api/transactions received {
+requestId: 'f4346c2d-9a1a-4afa-a854-35534c44604a',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'f4346c2d-9a1a-4afa-a854-35534c44604a',
+bodyLength: 211,
+truncated: false,
+body: '{"idTxn": 10072, "user": "nfinzaurif@hotmail.com", "date": "2015-05-15T04:28:02.824Z", "value": 3172325, "paymentMethod": "Google Pay", "hash": "43f1bb242c0b7aa87e28c8681e2d1d119cec752fef950636b5834e96b3f072e8"}'
+}
+POST /api/transactions 201 in 849ms (next.js: 5ms, application-code: 844ms)
+[Appresso] POST /api/transactions received {
+requestId: '03cf37bf-1961-4025-8a1f-9da8692ec14d',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '03cf37bf-1961-4025-8a1f-9da8692ec14d',
+bodyLength: 201,
+truncated: false,
+body: '{"idTxn": 10012, "user": "qawlev@outlook.com", "date": "2022-07-27T20:18:52.453Z", "value": 0, "paymentMethod": "Google Pay", "hash": "3eb21ce7e23ebb4c11cbae57cbc9a278c47caa1d1f8429444ee527b5624710be"}'
+}
+POST /api/transactions 201 in 870ms (next.js: 3ms, application-code: 867ms)
+[Appresso] POST /api/transactions received {
+requestId: 'd5ae8e60-2c02-4de3-b4cd-67dd3930235f',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'd5ae8e60-2c02-4de3-b4cd-67dd3930235f',
+bodyLength: 201,
+truncated: false,
+body: '{"idTxn": 10041, "user": "mkong@outlook.com", "date": "2019-10-28T13:12:55.534Z", "value": 3287040, "paymentMethod": -692262, "hash": "5921ce75f5c9c83baef0fd16cc326d5df2c45ac486dbbb4b98db9769e9fe5407"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'd5ae8e60-2c02-4de3-b4cd-67dd3930235f',
+bodyType: 'object',
+details: [
+{
+path: 'paymentMethod',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received number'
+}
+]
+}
+POST /api/transactions 422 in 14ms (next.js: 3ms, application-code: 12ms)
+[Appresso] POST /api/transactions received {
+requestId: '9f0bb986-97e4-4ff0-ab6f-0cfb68cd0fc0',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '9f0bb986-97e4-4ff0-ab6f-0cfb68cd0fc0',
+bodyLength: 205,
+truncated: false,
+body: '{"idTxn": 10053, "user": "zlfmqvcaam@gmail.com", "date": "2025-02-15T06:41:29.787Z", "value": 4787349, "paymentMethod": "Paypal", "hash": "5e5b1b23f3ef3b1f718b356168119dc1db7c9f6b68110e5e703d0f3a022ec67f"}'
+}
+POST /api/transactions 201 in 945ms (next.js: 3ms, application-code: 942ms)
+[Appresso] POST /api/transactions received {
+requestId: '5f3d2b27-c0af-43ae-b02c-a10c87dd9d40',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '5f3d2b27-c0af-43ae-b02c-a10c87dd9d40',
+bodyLength: 183,
+truncated: false,
+body: '{"idTxn": 10118, "user": "avfmdfy@gmail.com", "date": 0, "value": 762700, "paymentMethod": "Transferencia", "hash": "bee3786a18d2833ab1d5f1b217cb4bcc0c53d584a9cc24115c81ac5f599ba8e0"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '5f3d2b27-c0af-43ae-b02c-a10c87dd9d40',
+bodyType: 'object',
+details: [
+{
+path: 'date',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received number'
+}
+]
+}
+POST /api/transactions 422 in 16ms (next.js: 3ms, application-code: 13ms)
+[Appresso] POST /api/transactions received {
+requestId: '2d3f39e7-f71b-4151-b81d-73f14d9ad3a8',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '2d3f39e7-f71b-4151-b81d-73f14d9ad3a8',
+bodyLength: 205,
+truncated: false,
+body: '{"idTxn": 10149, "user": "oaofbq@yahoo.com", "date": "2020-06-23T12:46:50.522Z", "value": 1851627, "paymentMethod": "Google Pay", "hash": "5a4cd652fc70faaaa10f11e0dab6a53034114a80db73c1979f7f0ed8b76717aa"}'
+}
+POST /api/transactions 201 in 916ms (next.js: 4ms, application-code: 913ms)
+[Appresso] POST /api/transactions received {
+requestId: '1fc4e59d-98de-40d8-9400-19569c60fb5f',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '1fc4e59d-98de-40d8-9400-19569c60fb5f',
+bodyLength: 206,
+truncated: false,
+body: '{"idTxn": 10123, "user": "hqwrpoq@gmail.com", "date": "2018-07-12T19:42:54.501Z", "value": 3347383, "paymentMethod": "Google Pay", "hash": "dafd8c662280dc2254c7bf881d44297b58a94732cda152a51ecfd462f37fd66d"}'
+}
+POST /api/transactions 201 in 790ms (next.js: 3ms, application-code: 787ms)
+[Appresso] POST /api/transactions received {
+requestId: '68440b21-68d6-4804-88af-aee15ae1d5ab',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '68440b21-68d6-4804-88af-aee15ae1d5ab',
+bodyLength: 189,
+truncated: false,
+body: '{"idTxn": 10109, "user": "lbyqnjmajb@empresa.com", "date": -362142, "value": 4860655, "paymentMethod": "Tarjeta", "hash": "f37387f4018111dbcef481908a79f8537bc007e4fa50bb11cc1e8a73af3680e9"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '68440b21-68d6-4804-88af-aee15ae1d5ab',
+bodyType: 'object',
+details: [
+{
+path: 'date',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received number'
+}
+]
+}
+POST /api/transactions 422 in 15ms (next.js: 2.0ms, application-code: 13ms)
+[Appresso] POST /api/transactions received {
+requestId: 'fb987907-0bd5-4583-aebe-d0b672ec618c',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'fb987907-0bd5-4583-aebe-d0b672ec618c',
+bodyLength: 206,
+truncated: false,
+body: '{"idTxn": 10051, "user": "wruvvvz@outlook.com", "date": "2023-09-14T16:53:33.430Z", "value": 3059382, "paymentMethod": "Efectivo", "hash": "85d1b109dd85ad565db747732ef1bd585284f1ef9e9c96ff532ab68a683036de"}'
+}
+POST /api/transactions 201 in 778ms (next.js: 2ms, application-code: 776ms)
+[Appresso] POST /api/transactions received {
+requestId: '43fb21f2-e97d-4518-abb0-bff844ec8978',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '43fb21f2-e97d-4518-abb0-bff844ec8978',
+bodyLength: 205,
+truncated: false,
+body: '{"idTxn": 10040, "user": "mkong@outlook.com", "date": "2019-10-28T13:12:54.534Z", "value": 4305840, "paymentMethod": "Apple Pay", "hash": "d76f9f3c3d360c94d3217faa9d10e1bbcc4a3919b765ab67a5670a56d344f003"}'
+}
+POST /api/transactions 201 in 968ms (next.js: 3ms, application-code: 965ms)
+[Appresso] POST /api/transactions received {
+requestId: 'a3bf318b-ed64-4cf5-a30f-603e6e86a5fa',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'a3bf318b-ed64-4cf5-a30f-603e6e86a5fa',
+bodyLength: 194,
+truncated: false,
+body: '{"idTxn": 10035, "user": "izghz@gmail.com", "date": "2023-11-13T07:11:14.348Z", "value": 4887259, "paymentMethod": "", "hash": "daf2c51794b873468a1282b91bb2b71ff8f0d53814fc811539fff298c4895a39"}'
+}
+POST /api/transactions 201 in 884ms (next.js: 2ms, application-code: 882ms)
+[Appresso] POST /api/transactions received {
+requestId: 'ab4f5fa1-2d01-4116-a384-e00324f08991',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'ab4f5fa1-2d01-4116-a384-e00324f08991',
+bodyLength: 188,
+truncated: false,
+body: '{"idTxn": 10055, "user": 0, "date": "2025-02-15T06:41:31.787Z", "value": 1966248, "paymentMethod": "Google Pay", "hash": "78a109494acd4bd67a2e46f7106570e9a707f2d4c768e67878c52d39b0da15d3"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'ab4f5fa1-2d01-4116-a384-e00324f08991',
+bodyType: 'object',
+details: [
+{
+path: 'user',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received number'
+}
+]
+}
+POST /api/transactions 422 in 21ms (next.js: 4ms, application-code: 17ms)
+[Appresso] POST /api/transactions received {
+requestId: 'd1282398-9a64-4fb6-a1ab-86ac419b42af',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'd1282398-9a64-4fb6-a1ab-86ac419b42af',
+bodyLength: 206,
+truncated: false,
+body: '{"idTxn": 10145, "user": "bdmocbhfz@hotmail.com", "date": "2020-09-27T23:56:59.664Z", "value": 1199658, "paymentMethod": "Paypal", "hash": "fa6a989c8d9040824f25c8507809705a4a83cde3fe346e8d3bacc2c08399d286"}'
+}
+POST /api/transactions 201 in 808ms (next.js: 2ms, application-code: 805ms)
+[Appresso] POST /api/transactions received {
+requestId: '9b7d23b1-8a8b-4b8c-8c61-96d40e6f78cc',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '9b7d23b1-8a8b-4b8c-8c61-96d40e6f78cc',
+bodyLength: 203,
+truncated: false,
+body: '{"idTxn": 10119, "user": "nniddl@empresa.com", "date": "2020-02-17T07:59:19.479Z", "value": 1886591, "paymentMethod": "Paypal", "hash": "f0124d440df429fdcf8d3f474702b60f89d597f0665519c37c6f57d844078148"}'
+}
+POST /api/transactions 201 in 1034ms (next.js: 3ms, application-code: 1031ms)
+[Appresso] POST /api/transactions received {
+requestId: '4d8d2df3-b643-4741-a9da-85d0d812891a',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '4d8d2df3-b643-4741-a9da-85d0d812891a',
+bodyLength: 192,
+truncated: false,
+body: '{"idTxn": 10147, "user": "null", "date": "2018-12-15T04:44:54.103Z", "value": 3526883, "paymentMethod": "Apple Pay", "hash": "9bd9f3c4cd7873a9321347c26f6217afa7257bfa8c2c4f9b1d832673f76a187e"}'
+}
+POST /api/transactions 201 in 1261ms (next.js: 4ms, application-code: 1257ms)
+[Appresso] POST /api/transactions received {
+requestId: '8d6dd8e1-20b3-47f4-b9e3-6e6394e8cc25',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '8d6dd8e1-20b3-47f4-b9e3-6e6394e8cc25',
+bodyLength: 178,
+truncated: false,
+body: '{"idTxn": "null", "user": "qvumgtuy@outlook.com", "date": "2016-03-25T15:32:42.548Z", "value": "rlbqx5ta", "paymentMethod": "Tarjeta", "hash": "b067cac9a6b34bae9570010add887189"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '8d6dd8e1-20b3-47f4-b9e3-6e6394e8cc25',
+bodyType: 'object',
+details: [
+{
+path: 'value',
+code: 'invalid_type',
+message: 'Invalid input: expected number, received string'
+}
+]
+}
+POST /api/transactions 422 in 12ms (next.js: 2ms, application-code: 10ms)
+[Appresso] POST /api/transactions received {
+requestId: '96c2a6e5-92c0-4136-93e1-6ea8e8d5fb8b',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '96c2a6e5-92c0-4136-93e1-6ea8e8d5fb8b',
+bodyLength: 201,
+truncated: false,
+body: '{"idTxn": 10087, "user": "olqa@outlook.com", "date": "2022-01-16T05:50:02.662Z", "value": 2322277, "paymentMethod": "Paypal", "hash": "8d764d122281be1a127b90468deeadf151c866805fd559b134a2fdcceabc6fad"}'
+}
+POST /api/transactions 201 in 811ms (next.js: 3ms, application-code: 808ms)
+[Appresso] POST /api/transactions received {
+requestId: 'a437ba05-9d68-4d56-8c11-8856e8f99d55',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'a437ba05-9d68-4d56-8c11-8856e8f99d55',
+bodyLength: 201,
+truncated: false,
+body: '{"idTxn": 10023, "user": "gvilz@yahoo.com", "date": "2026-09-22T04:19:11.834Z", "value": 3844814, "paymentMethod": "Tarjeta", "hash": "99dea74bd441ff526405405943a1ededbb512b8594e26257fa4942dd660c3092"}'
+}
+POST /api/transactions 201 in 1103ms (next.js: 3ms, application-code: 1100ms)
+[Appresso] POST /api/transactions received {
+requestId: 'ebdd1a6c-051b-46dd-bd1c-760f1f4ff30c',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'ebdd1a6c-051b-46dd-bd1c-760f1f4ff30c',
+bodyLength: 204,
+truncated: false,
+body: '{"idTxn": 10009, "user": "qawlev@outlook.com", "date": "2022-07-27T20:18:49.453Z", "value": 4937947, "paymentMethod": "Tarjeta", "hash": "74a7277a1d3d635ef129a19d5651aa81639e5d3ebdbfb3849eddffc69e134f04"}'
+}
+POST /api/transactions 201 in 880ms (next.js: 4ms, application-code: 877ms)
+[Appresso] POST /api/transactions received {
+requestId: 'a302a860-147a-4b13-beac-b3a1633121f7',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'a302a860-147a-4b13-beac-b3a1633121f7',
+bodyLength: 205,
+truncated: false,
+body: '{"idTxn": 10076, "user": "yncuxvfwfv@yahoo.com", "date": "2018-01-05T12:15:20.279Z", "value": 3880548, "paymentMethod": "Paypal", "hash": "4f87baf3312447faf89b64da450d4035edb38b2d3de03751475e5938470f1160"}'
+}
+POST /api/transactions 201 in 1183ms (next.js: 1.9ms, application-code: 1181ms)
+[Appresso] POST /api/transactions received {
+requestId: 'f04b2abc-e822-4a47-94d8-b3e7860ed5c2',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'f04b2abc-e822-4a47-94d8-b3e7860ed5c2',
+bodyLength: 206,
+truncated: false,
+body: '{"idTxn": 10075, "user": "xmfgixxmm@hotmail.com", "date": "2020-03-14T23:58:14.770Z", "value": 666387, "paymentMethod": "Tarjeta", "hash": "bda4b47ba1faca68b70875b668e212ba41d5fe98cffbbb5a8708b83e5b9991fe"}'
+}
+POST /api/transactions 201 in 748ms (next.js: 2ms, application-code: 746ms)
+[Appresso] POST /api/transactions received {
+requestId: '78629d75-f148-4791-bf31-6855728c91ea',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '78629d75-f148-4791-bf31-6855728c91ea',
+bodyLength: 204,
+truncated: false,
+body: '{"idTxn": 10058, "user": "avfmdfy@gmail.com", "date": "2020-02-01T07:52:20.260Z", "value": 1699266, "paymentMethod": "Efectivo", "hash": "f32b66e52b910c172894f214a64353e2c08fd2946fc12dbe616da619b252e874"}'
+}
+POST /api/transactions 201 in 784ms (next.js: 3ms, application-code: 781ms)
+[Appresso] POST /api/transactions received {
+requestId: 'bb4a7a5c-960e-4db7-b240-d94f7a7ce3b5',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'bb4a7a5c-960e-4db7-b240-d94f7a7ce3b5',
+bodyLength: 203,
+truncated: false,
+body: '{"idTxn": 10074, "user": "givk@gmail.com", "date": "2017-11-01T10:06:15.635Z", "value": 4447477, "paymentMethod": "Google Pay", "hash": "c03a82f2e9df9e64e159fea8cc563f42c5764f13029b7bb0cf50d95de53be788"}'
+}
+POST /api/transactions 201 in 815ms (next.js: 1.9ms, application-code: 813ms)
+[Appresso] POST /api/transactions received {
+requestId: '0489c913-1aec-420a-9445-28fb7c568af7',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '0489c913-1aec-420a-9445-28fb7c568af7',
+bodyLength: 161,
+truncated: false,
+body: '{"idTxn": 10108, "user": "eyzvw@gmail.com", "date": "2023-11-16T08:31:28.346Z", "value": 1648514, "paymentMethod": 0, "hash": "2aa1baa5ab09422e8d0c42d966d88046"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '0489c913-1aec-420a-9445-28fb7c568af7',
+bodyType: 'object',
+details: [
+{
+path: 'paymentMethod',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received number'
+}
+]
+}
+POST /api/transactions 422 in 18ms (next.js: 3ms, application-code: 15ms)
+[Appresso] POST /api/transactions received {
+requestId: '21ff34bb-5ed3-43ed-a411-0df0738f5fbe',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '21ff34bb-5ed3-43ed-a411-0df0738f5fbe',
+bodyLength: 138,
+truncated: false,
+body: '{"idTxn": true, "user": "ycrt@hotmail.com", "date": "2020-03-25T04:49:38.354Z", "value": 3770467, "paymentMethod": "TymYHhHx", "hash": ""}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '21ff34bb-5ed3-43ed-a411-0df0738f5fbe',
+bodyType: 'object',
+details: [
+{ path: 'idTxn', code: 'invalid_union', message: 'Invalid input' }
+]
+}
+POST /api/transactions 422 in 17ms (next.js: 2ms, application-code: 15ms)
+[Appresso] POST /api/transactions received {
+requestId: 'ce72eeee-869d-48c2-832c-e8e040ffa942',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'ce72eeee-869d-48c2-832c-e8e040ffa942',
+bodyLength: 199,
+truncated: false,
+body: '{"idTxn": 10018, "user": "clya@hotmail.com", "date": "2021-06-16T22:16:29.089Z", "value": 4326178, "paymentMethod": "null", "hash": "d35c181dd87594ec7054a3bdb332ce98e3189ccf97c3d6f878e65c2cdc49c633"}'
+}
+POST /api/transactions 201 in 1115ms (next.js: 2ms, application-code: 1113ms)
+[Appresso] POST /api/transactions received {
+requestId: '788120b9-29c8-43ff-beba-f3a0335a7525',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '788120b9-29c8-43ff-beba-f3a0335a7525',
+bodyLength: 145,
+truncated: false,
+body: '{"idTxn": 10101, "user": "kpyqqysw@empresa.com", "date": "2016-08-20T22:44:31.526Z", "value": 2980641, "paymentMethod": "Google Pay", "hash": ""}'
+}
+POST /api/transactions 201 in 830ms (next.js: 2ms, application-code: 827ms)
+[Appresso] POST /api/transactions received {
+requestId: 'e158fc88-7229-4d77-8ace-2891f5ab0c25',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'e158fc88-7229-4d77-8ace-2891f5ab0c25',
+bodyLength: 207,
+truncated: false,
+body: '{"idTxn": 10095, "user": "pyysvxo@hotmail.com", "date": "2026-05-15T20:13:06.066Z", "value": 1489335, "paymentMethod": "Apple Pay", "hash": "608408be9ed93fe09538b76f76832672e28e8a4b6cda0de70430d40d98de4c7c"}'
+}
+POST /api/transactions 201 in 958ms (next.js: 2ms, application-code: 956ms)
+[Appresso] POST /api/transactions received {
+requestId: '22104902-d7da-49cb-9efe-aac09971f8f4',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '22104902-d7da-49cb-9efe-aac09971f8f4',
+bodyLength: 205,
+truncated: false,
+body: '{"idTxn": 10113, "user": "drhbmfsgrx@yahoo.com", "date": "2020-05-27T19:03:24.517Z", "value": 4004183, "paymentMethod": "Paypal", "hash": "f68d6415d7fe05d4d7b828c025e22f63dfec323d86f2223c637623929e1eae1b"}'
+}
+POST /api/transactions 201 in 733ms (next.js: 2.0ms, application-code: 731ms)
+[Appresso] POST /api/transactions received {
+requestId: 'fbc9da15-82fb-43d7-b25b-6c0a2b06e6e4',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'fbc9da15-82fb-43d7-b25b-6c0a2b06e6e4',
+bodyLength: 208,
+truncated: false,
+body: '{"idTxn": 10140, "user": "nslmhdiyny@empresa.com", "date": "2026-03-20T13:51:40.953Z", "value": 2186845, "paymentMethod": "Tarjeta", "hash": "b3410f68f1ab3a05b41d7334f4026ce67043c7e8f9bf9b15e2dc5584b3b9cd45"}'
+}
+POST /api/transactions 201 in 827ms (next.js: 3ms, application-code: 824ms)
+[Appresso] POST /api/transactions received {
+requestId: '107bbc0e-3772-47bc-b5cf-97a59a7b1824',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '107bbc0e-3772-47bc-b5cf-97a59a7b1824',
+bodyLength: 185,
+truncated: false,
+body: '{"idTxn": "undefined", "user": "", "date": "2019-11-10T22:36:40.636Z", "value": 2364689, "paymentMethod": "", "hash": "5331fe32983a7b33d09b510b4913ebb86974e1554e5e614bed72d0819997d5f0"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '107bbc0e-3772-47bc-b5cf-97a59a7b1824',
+bodyType: 'object',
+details: [
+{
+path: 'user',
+code: 'too_small',
+message: 'Too small: expected string to have >=1 characters'
+}
+]
+}
+POST /api/transactions 422 in 15ms (next.js: 3ms, application-code: 13ms)
+[Appresso] POST /api/transactions received {
+requestId: 'abf7f56e-8642-49c5-b94a-5886a19308f9',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'abf7f56e-8642-49c5-b94a-5886a19308f9',
+bodyLength: 202,
+truncated: false,
+body: '{"idTxn": 10157, "user": "mzoenox@yahoo.com", "date": "2024-04-22T06:11:41.416Z", "value": 2177955, "paymentMethod": "Paypal", "hash": "a453a09bb9b901bb4c5877171e446d069865234cfe27dfde944ffeaf10346856"}'
+}
+POST /api/transactions 201 in 744ms (next.js: 1.9ms, application-code: 742ms)
+[Appresso] POST /api/transactions received {
+requestId: '567df87b-01da-449e-91c0-c0055f210d2b',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '567df87b-01da-449e-91c0-c0055f210d2b',
+bodyLength: 204,
+truncated: false,
+body: '{"idTxn": 10063, "user": "mzoenox@yahoo.com", "date": "2021-03-10T15:37:20.926Z", "value": 1310999, "paymentMethod": "Efectivo", "hash": "bb77ad379ddf1f5e3f9af36f84db070921634442f4734b9eef0a44cbef3a2421"}'
+}
+POST /api/transactions 201 in 701ms (next.js: 2ms, application-code: 699ms)
+[Appresso] POST /api/transactions received {
+requestId: '77f986d0-a1a1-4d12-9bf8-a35d061c6a79',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '77f986d0-a1a1-4d12-9bf8-a35d061c6a79',
+bodyLength: 203,
+truncated: false,
+body: '{"idTxn": 10079, "user": "hqwrpoq@gmail.com", "date": "2023-06-04T18:45:17.436Z", "value": 923845, "paymentMethod": "Efectivo", "hash": "d9401ddfc9d41f470719b1b23d0561caa05275a882fdebc88d781c7b41bc6599"}'
+}
+POST /api/transactions 201 in 761ms (next.js: 3ms, application-code: 757ms)
+[Appresso] POST /api/transactions received {
+requestId: '4f4d051a-eb24-4433-8b7c-35bd0170760b',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '4f4d051a-eb24-4433-8b7c-35bd0170760b',
+bodyLength: 208,
+truncated: false,
+body: '{"idTxn": 10153, "user": "nfinzaurif@hotmail.com", "date": "2017-10-09T17:43:42.584Z", "value": 1690854, "paymentMethod": "Tarjeta", "hash": "f564371817d754ddfd7b411d2a701f849f5d958091fdd0722388091c1e38355a"}'
+}
+POST /api/transactions 201 in 797ms (next.js: 1.9ms, application-code: 795ms)
+[Appresso] POST /api/transactions received {
+requestId: 'c9baad3d-adc0-4c7e-8a4f-dbda2b5a86fb',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'c9baad3d-adc0-4c7e-8a4f-dbda2b5a86fb',
+bodyLength: 187,
+truncated: false,
+body: '{"idTxn": 10044, "user": "mkong@outlook.com", "date": "undefined", "value": 156771, "paymentMethod": "Tarjeta", "hash": "97c98d38b389647716a97b7bdfe5e67a1ee810a87a133aba320da3c53908aada"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'c9baad3d-adc0-4c7e-8a4f-dbda2b5a86fb',
+bodyType: 'object',
+details: [
+{
+path: 'date',
+code: 'custom',
+message: 'Usa una fecha y hora ISO 8601 válida con Z, offset horario o sin zona.'
+}
+]
+}
+POST /api/transactions 422 in 19ms (next.js: 3ms, application-code: 17ms)
+[Appresso] POST /api/transactions received {
+requestId: '669149f0-b30c-475f-a0ac-cabfaef7ca68',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '669149f0-b30c-475f-a0ac-cabfaef7ca68',
+bodyLength: 207,
+truncated: false,
+body: '{"idTxn": 10133, "user": "gfxgfrga@outlook.com", "date": "2024-10-21T15:59:22.507Z", "value": 1886877, "paymentMethod": "Efectivo", "hash": "0b0696d47610264ee276fde13d8d9904e50b8037e9343cadc6dcaae8c34d1aed"}'
+}
+POST /api/transactions 201 in 761ms (next.js: 1.9ms, application-code: 759ms)
+[Appresso] POST /api/transactions received {
+requestId: 'df8831ac-c0d2-4416-9077-efc699393509',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'df8831ac-c0d2-4416-9077-efc699393509',
+bodyLength: 206,
+truncated: false,
+body: '{"idTxn": 10062, "user": "qarxosv@outlook.com", "date": "2019-12-24T19:08:27.088Z", "value": 1147297, "paymentMethod": "Efectivo", "hash": "2ee3d5acd7d78880d09bf1c08f4a17ce514dd068c3e483c3298fe65ff3f99cda"}'
+}
+POST /api/transactions 201 in 914ms (next.js: 2ms, application-code: 912ms)
+[Appresso] POST /api/transactions received {
+requestId: 'b0e71778-a7d9-46aa-9dcb-a5b0dea4f80f',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'b0e71778-a7d9-46aa-9dcb-a5b0dea4f80f',
+bodyLength: 207,
+truncated: false,
+body: '{"idTxn": "8LMQQBLU", "user": "cexbpu@gmail.com", "date": "2018-04-16T15:53:46.248Z", "value": 2891715, "paymentMethod": "Tarjeta", "hash": "cd93e801a00a848f04292ec188a79788b752565247d2a08359d08369942dca1f"}'
+}
+POST /api/transactions 201 in 776ms (next.js: 4ms, application-code: 772ms)
+[Appresso] POST /api/transactions received {
+requestId: 'c04956d7-d99c-433e-b3ca-be3c1d4e56f4',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'c04956d7-d99c-433e-b3ca-be3c1d4e56f4',
+bodyLength: 180,
+truncated: false,
+body: '{"idTxn": 10082, "user": "hzdtsyeqq@outlook.com", "date": "", "value": 97996, "paymentMethod": "Paypal", "hash": "46d2c3fd66097d7497b1b59a414e6d6aae26bd2df5f88112877ed69791a6cd19"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'c04956d7-d99c-433e-b3ca-be3c1d4e56f4',
+bodyType: 'object',
+details: [
+{
+path: 'date',
+code: 'custom',
+message: 'Usa una fecha y hora ISO 8601 válida con Z, offset horario o sin zona.'
+}
+]
+}
+POST /api/transactions 422 in 23ms (next.js: 3ms, application-code: 20ms)
+[Appresso] POST /api/transactions received {
+requestId: '0cf8f7a4-c1f2-4036-b856-be4064e999fd',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '0cf8f7a4-c1f2-4036-b856-be4064e999fd',
+bodyLength: 203,
+truncated: false,
+body: '{"idTxn": 10151, "user": "cexbpu@gmail.com", "date": "2020-08-11T12:06:54.868Z", "value": 4376332, "paymentMethod": "Efectivo", "hash": "4b238ac2dd7b1fd4d385ef3128daaf1285bc954b20e4137d3e29eb9c0d820791"}'
+}
+POST /api/transactions 201 in 836ms (next.js: 2ms, application-code: 833ms)
+[Appresso] POST /api/transactions received {
+requestId: '30e4abb8-6919-4336-9db7-9db6176d3eb4',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '30e4abb8-6919-4336-9db7-9db6176d3eb4',
+bodyLength: 201,
+truncated: false,
+body: '{"idTxn": "", "user": "clya@hotmail.com", "date": "2021-06-16T22:16:31.089Z", "value": "null", "paymentMethod": "Google Pay", "hash": "ea4a3e37204a67600824c409da2464836b5423d6f6aac53f6a9113bc9d99ad88"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '30e4abb8-6919-4336-9db7-9db6176d3eb4',
+bodyType: 'object',
+details: [
+{ path: 'idTxn', code: 'custom', message: 'Invalid input' },
+{
+path: 'value',
+code: 'invalid_type',
+message: 'Invalid input: expected number, received string'
+}
+]
+}
+POST /api/transactions 422 in 20ms (next.js: 3ms, application-code: 17ms)
+[Appresso] POST /api/transactions received {
+requestId: '3de3b83e-f73c-4f69-b128-2f4e58344738',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '3de3b83e-f73c-4f69-b128-2f4e58344738',
+bodyLength: 208,
+truncated: false,
+body: '{"idTxn": 10067, "user": "uhggjjxbtf@empresa.com", "date": "2021-04-12T22:11:48.320Z", "value": 1320382, "paymentMethod": "Tarjeta", "hash": "c0c21dc3b813e0e2ba2d2af821cacc7c87d59768d660c78f0cf128d629c3b350"}'
+}
+POST /api/transactions 201 in 740ms (next.js: 2ms, application-code: 738ms)
+[Appresso] POST /api/transactions received {
+requestId: 'be802189-883a-4a01-a36a-01bd7dc898e1',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'be802189-883a-4a01-a36a-01bd7dc898e1',
+bodyLength: 206,
+truncated: false,
+body: '{"idTxn": 10013, "user": "euyfsjmufu@hotmail.com", "date": "2021-05-21T22:21:16.003Z", "value": 911202, "paymentMethod": "Paypal", "hash": "93eeff8d7d888e49c2672271e1e90c1c4c12b62ea3d211beecda2a0384093933"}'
+}
+POST /api/transactions 201 in 844ms (next.js: 4ms, application-code: 840ms)
+[Appresso] POST /api/transactions received {
+requestId: '3aedd2e5-7335-48d2-8a72-1667e6d0a7cd',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '3aedd2e5-7335-48d2-8a72-1667e6d0a7cd',
+bodyLength: 191,
+truncated: false,
+body: '{"idTxn": 10099, "user": "huptyrbark@gmail.com", "date": false, "value": 4568244, "paymentMethod": "Transferencia", "hash": "be645c18591cafb0f4ebe751ff143a13b8f04b17945679c11a29b0cdb8eed5f2"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '3aedd2e5-7335-48d2-8a72-1667e6d0a7cd',
+bodyType: 'object',
+details: [
+{
+path: 'date',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received boolean'
+}
+]
+}
+POST /api/transactions 422 in 20ms (next.js: 2ms, application-code: 18ms)
+[Appresso] POST /api/transactions received {
+requestId: 'dfcdbc9b-87f3-4cee-b5e2-ff7ab1b4e939',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'dfcdbc9b-87f3-4cee-b5e2-ff7ab1b4e939',
+bodyLength: 204,
+truncated: false,
+body: '{"idTxn": 10124, "user": "nrzdrq@empresa.com", "date": "2018-10-30T22:10:33.686Z", "value": true, "paymentMethod": "Google Pay", "hash": "de918f565a03e5876141572ede3bc6519065c0ccceb7efa5a2b7ed2f013c4197"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'dfcdbc9b-87f3-4cee-b5e2-ff7ab1b4e939',
+bodyType: 'object',
+details: [
+{
+path: 'value',
+code: 'invalid_type',
+message: 'Invalid input: expected number, received boolean'
+}
+]
+}
+POST /api/transactions 422 in 16ms (next.js: 2ms, application-code: 14ms)
+[Appresso] POST /api/transactions received {
+requestId: '8077cd47-7d39-4483-8c1a-5d52b7a5289d',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '8077cd47-7d39-4483-8c1a-5d52b7a5289d',
+bodyLength: 206,
+truncated: false,
+body: '{"idTxn": 10030, "user": "nywyuye@outlook.com", "date": "2019-08-23T23:54:45.575Z", "value": 3434885, "paymentMethod": "Efectivo", "hash": "9d028d8270c69b1178121f836891827f0d388a0ec943fa09c4364fff235be801"}'
+}
+POST /api/transactions 201 in 1345ms (next.js: 3ms, application-code: 1342ms)
+[Appresso] POST /api/transactions received {
+requestId: '9aa5b5b4-9a9f-41b9-b271-b8b44c96248c',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '9aa5b5b4-9a9f-41b9-b271-b8b44c96248c',
+bodyLength: 204,
+truncated: false,
+body: '{"idTxn": 10091, "user": "lbyqnjmajb@empresa.com", "date": "2023-05-19T07:57:30.644Z", "value": true, "paymentMethod": "Paypal", "hash": "b1261dedf4dc7c0d17c944689a77d99e9edfad9474bb76edb12c85e7a1ed7973"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '9aa5b5b4-9a9f-41b9-b271-b8b44c96248c',
+bodyType: 'object',
+details: [
+{
+path: 'value',
+code: 'invalid_type',
+message: 'Invalid input: expected number, received boolean'
+}
+]
+}
+POST /api/transactions 422 in 25ms (next.js: 2ms, application-code: 22ms)
+[Appresso] POST /api/transactions received {
+requestId: 'f4be0ea5-f473-4d6d-ab22-8d13b316343a',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'f4be0ea5-f473-4d6d-ab22-8d13b316343a',
+bodyLength: 145,
+truncated: false,
+body: '{"idTxn": 10132, "user": "huptyrbark@gmail.com", "date": "2016-09-28T10:04:11.043Z", "value": 1664891, "paymentMethod": "Google Pay", "hash": ""}'
+}
+POST /api/transactions 201 in 922ms (next.js: 3ms, application-code: 920ms)
+[Appresso] POST /api/transactions received {
+requestId: 'fcd19cc4-a7d9-4bb7-8c14-a86112402fe2',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'fcd19cc4-a7d9-4bb7-8c14-a86112402fe2',
+bodyLength: 206,
+truncated: false,
+body: '{"idTxn": 10017, "user": "clya@hotmail.com", "date": "2021-06-16T22:16:28.089Z", "value": false, "paymentMethod": "Transferencia", "hash": "4971b974b5ac0e4664391242b061734e97362d1e98ee10936257753bd9ec476e"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'fcd19cc4-a7d9-4bb7-8c14-a86112402fe2',
+bodyType: 'object',
+details: [
+{
+path: 'value',
+code: 'invalid_type',
+message: 'Invalid input: expected number, received boolean'
+}
+]
+}
+POST /api/transactions 422 in 16ms (next.js: 1.9ms, application-code: 14ms)
+[Appresso] POST /api/transactions received {
+requestId: '446863cf-6dcc-434d-9ad6-2a207cc790df',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '446863cf-6dcc-434d-9ad6-2a207cc790df',
+bodyLength: 207,
+truncated: false,
+body: '{"idTxn": 10019, "user": "clya@hotmail.com", "date": "2021-06-16T22:16:30.089Z", "value": 358114, "paymentMethod": "Transferencia", "hash": "09f5517d8210cd86eb369aacb128f8d9fb04a7ac4bddbac7e31679818f55abd9"}'
+}
+POST /api/transactions 201 in 838ms (next.js: 3ms, application-code: 835ms)
+[Appresso] POST /api/transactions received {
+requestId: 'c9828e86-f679-4e34-91b5-89197e758917',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'c9828e86-f679-4e34-91b5-89197e758917',
+bodyLength: 194,
+truncated: false,
+body: '{"idTxn": 10085, "user": "givk@gmail.com", "date": "2017-08-27T07:36:02.217Z", "value": "", "paymentMethod": "Paypal", "hash": "d3084d441811ca75343dd4434e15a5f917ee38247d3a78be4eb48f5ac2300716"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'c9828e86-f679-4e34-91b5-89197e758917',
+bodyType: 'object',
+details: [
+{
+path: 'value',
+code: 'invalid_type',
+message: 'Invalid input: expected number, received string'
+}
+]
+}
+POST /api/transactions 422 in 15ms (next.js: 3ms, application-code: 13ms)
+[Appresso] POST /api/transactions received {
+requestId: 'adb1bde5-f5cf-4182-b695-8376dc832f20',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'adb1bde5-f5cf-4182-b695-8376dc832f20',
+bodyLength: 186,
+truncated: false,
+body: '{"idTxn": 10006, "user": "", "date": "2024-12-23T22:33:27.266Z", "value": 3406342, "paymentMethod": "Tarjeta", "hash": "dc65fd2231094b001c139ffdce6913b08636b433cb8348696e3ab2f5c68cca12"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'adb1bde5-f5cf-4182-b695-8376dc832f20',
+bodyType: 'object',
+details: [
+{
+path: 'user',
+code: 'too_small',
+message: 'Too small: expected string to have >=1 characters'
+}
+]
+}
+POST /api/transactions 422 in 16ms (next.js: 4ms, application-code: 13ms)
+[Appresso] POST /api/transactions received {
+requestId: 'cdd849c6-8677-44a5-bf2d-4ce684e08530',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'cdd849c6-8677-44a5-bf2d-4ce684e08530',
+bodyLength: 204,
+truncated: false,
+body: '{"idTxn": 10045, "user": "mkong@outlook.com", "date": "2019-10-28T13:12:59.534Z", "value": 1514088, "paymentMethod": "Efectivo", "hash": "43458ada183036c0710b5e7886264f497342f8cfc97132ef90106558e50890c0"}'
+}
+POST /api/transactions 201 in 1334ms (next.js: 4ms, application-code: 1331ms)
+[Appresso] POST /api/transactions received {
+requestId: 'c201ffe2-7357-4939-93ff-89eef8227986',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'c201ffe2-7357-4939-93ff-89eef8227986',
+bodyLength: 209,
+truncated: false,
+body: '{"idTxn": "8XeB8hIs", "user": "gvilz@yahoo.com", "date": "2026-09-22T04:19:10.834Z", "value": 3842598, "paymentMethod": "Google Pay", "hash": "f6b87c5b0e66d6b7b1a13313dd45cbfce554e06bdbe2b61e399c3853bd3d5ed6"}'
+}
+POST /api/transactions 201 in 1044ms (next.js: 3ms, application-code: 1041ms)
+[Appresso] POST /api/transactions received {
+requestId: 'fc4e385c-fbbd-4b8e-b15a-7dec405cbda4',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'fc4e385c-fbbd-4b8e-b15a-7dec405cbda4',
+bodyLength: 169,
+truncated: false,
+body: '{"idTxn": 10031, "user": 150189, "date": "null", "value": 3027921, "paymentMethod": "Paypal", "hash": "7535ff62f46f26aa96cbe27ce218cbc005236d0b79a7e71fbd7ca26a0b016650"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'fc4e385c-fbbd-4b8e-b15a-7dec405cbda4',
+bodyType: 'object',
+details: [
+{
+path: 'user',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received number'
+},
+{
+path: 'date',
+code: 'custom',
+message: 'Usa una fecha y hora ISO 8601 válida con Z, offset horario o sin zona.'
+}
+]
+}
+POST /api/transactions 422 in 18ms (next.js: 2ms, application-code: 16ms)
+[Appresso] POST /api/transactions received {
+requestId: 'b018140a-4168-4df8-bbc6-0fbc8b22fa45',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'b018140a-4168-4df8-bbc6-0fbc8b22fa45',
+bodyLength: 213,
+truncated: false,
+body: '{"idTxn": 10125, "user": "hzdtsyeqq@outlook.com", "date": "2015-04-22T22:42:31.672Z", "value": 3901368, "paymentMethod": "Transferencia", "hash": "3863d24e5ba602961d7231e14d7854b3fb1da6f59c40a43d2a928ab37c93d02d"}'
+}
+POST /api/transactions 201 in 758ms (next.js: 3ms, application-code: 755ms)
+[Appresso] POST /api/transactions received {
+requestId: '8ebe0fb0-4de3-40e2-9918-2f34b1fedb88',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '8ebe0fb0-4de3-40e2-9918-2f34b1fedb88',
+bodyLength: 207,
+truncated: false,
+body: '{"idTxn": 10156, "user": "huptyrbark@gmail.com", "date": "2016-10-12T23:59:01.509Z", "value": 980058, "paymentMethod": "Apple Pay", "hash": "706de0480f0d6ae553bbf2f26d250b489c32fba575cc8e1d9e46f57bdc16192d"}'
+}
+POST /api/transactions 201 in 881ms (next.js: 1.9ms, application-code: 879ms)
+[Appresso] POST /api/transactions received {
+requestId: 'b0eb145e-e2aa-4bd6-960c-ed2d90ed0255',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'b0eb145e-e2aa-4bd6-960c-ed2d90ed0255',
+bodyLength: 150,
+truncated: false,
+body: '{"idTxn": 10015, "user": "euyfsjmufu@hotmail.com", "date": "", "value": 520664, "paymentMethod": "Paypal", "hash": "f56b46ad43854e67ac51c6a640d9783e"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: 'b0eb145e-e2aa-4bd6-960c-ed2d90ed0255',
+bodyType: 'object',
+details: [
+{
+path: 'date',
+code: 'custom',
+message: 'Usa una fecha y hora ISO 8601 válida con Z, offset horario o sin zona.'
+}
+]
+}
+POST /api/transactions 422 in 16ms (next.js: 2ms, application-code: 14ms)
+[Appresso] POST /api/transactions received {
+requestId: '49549eac-5e04-444f-8ba1-b4d39821175a',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '49549eac-5e04-444f-8ba1-b4d39821175a',
+bodyLength: 201,
+truncated: false,
+body: '{"idTxn": 10046, "user": "mkong@outlook.com", "date": "2019-10-28T13:13:00.534Z", "value": 718470, "paymentMethod": "Paypal", "hash": "b94d9d2aa9bca7680010ceee1ab6f97d6bef7ae96f3609cad2e25de6a986124b"}'
+}
+POST /api/transactions 201 in 934ms (next.js: 2ms, application-code: 932ms)
+[Appresso] POST /api/transactions received {
+requestId: 'a017bd5e-74f1-46b9-99ce-2251610ec405',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'a017bd5e-74f1-46b9-99ce-2251610ec405',
+bodyLength: 202,
+truncated: false,
+body: '{"idTxn": 10103, "user": "cexbpu@gmail.com", "date": "2020-05-28T20:22:59.591Z", "value": 3502986, "paymentMethod": "Tarjeta", "hash": "40731307156cb3ecd60e6a7eaa48d110166495faaaf820952f64f220dd95c373"}'
+}
+POST /api/transactions 201 in 787ms (next.js: 3ms, application-code: 784ms)
+[Appresso] POST /api/transactions received {
+requestId: '6e4ec570-c638-440c-8dda-597e51b47f80',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '6e4ec570-c638-440c-8dda-597e51b47f80',
+bodyLength: 206,
+truncated: false,
+body: '{"idTxn": 10065, "user": "utcdqs@outlook.com", "date": "2015-08-20T18:19:45.984Z", "value": 1771324, "paymentMethod": "Apple Pay", "hash": "fe066a6d24f80d3f5ab503063d3bfa4b11e018dc7041ec5f90881b0a1aa52bca"}'
+}
+POST /api/transactions 201 in 766ms (next.js: 1.9ms, application-code: 764ms)
+[Appresso] POST /api/transactions received {
+requestId: 'd67c16a3-7568-4e20-a5c1-cb237de1d19b',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: 'd67c16a3-7568-4e20-a5c1-cb237de1d19b',
+bodyLength: 203,
+truncated: false,
+body: '{"idTxn": 10026, "user": "nywyuye@outlook.com", "date": "2019-08-23T23:54:41.575Z", "value": 367981, "paymentMethod": "Paypal", "hash": "c85a0439cfd96d1ec1ac21cec213874136ca08d87543ef6b632384e6b28a55a3"}'
+}
+POST /api/transactions 201 in 819ms (next.js: 5ms, application-code: 814ms)
+[Appresso] POST /api/transactions received {
+requestId: '1464e103-c57b-4a5b-bcbc-b8d59768eceb',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '1464e103-c57b-4a5b-bcbc-b8d59768eceb',
+bodyLength: 208,
+truncated: false,
+body: '{"idTxn": 10110, "user": "bdmocbhfz@hotmail.com", "date": "2015-11-03T00:31:57.934Z", "value": 840062, "paymentMethod": "Apple Pay", "hash": "b5cdd678865bf30c9ee46c0e16967ed94865290a345a386ffa7dea5f661c2a4e"}'
+}
+POST /api/transactions 201 in 783ms (next.js: 3ms, application-code: 781ms)
+[Appresso] POST /api/transactions received {
+requestId: '5f00146a-6d4c-42d9-8749-9facd35e7bdf',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '5f00146a-6d4c-42d9-8749-9facd35e7bdf',
+bodyLength: 207,
+truncated: false,
+body: '{"idTxn": 10129, "user": "qvumgtuy@outlook.com", "date": "2015-07-18T10:29:57.566Z", "value": 3686101, "paymentMethod": "Efectivo", "hash": "a391730ab3e7561d7ea2fd7ca91cbd3be8d6d8728c302559a5f5bf289658cf3f"}'
+}
+POST /api/transactions 201 in 766ms (next.js: 3ms, application-code: 762ms)
+[Appresso] POST /api/transactions received {
+requestId: '4c933daf-d201-487a-97de-5e9c4758b069',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '4c933daf-d201-487a-97de-5e9c4758b069',
+bodyLength: 212,
+truncated: false,
+body: '{"idTxn": 10057, "user": "zlfmqvcaam@gmail.com", "date": "2025-02-15T06:41:33.787Z", "value": 3776972, "paymentMethod": "Transferencia", "hash": "aca032f172ece04d891d13cb188007229617a7061dbc62ea7149d336506218c6"}'
+}
+POST /api/transactions 201 in 722ms (next.js: 4ms, application-code: 718ms)
+[Appresso] POST /api/transactions received {
+requestId: '9dce497c-42ac-4ff3-83a6-ead448bdd360',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '9dce497c-42ac-4ff3-83a6-ead448bdd360',
+bodyLength: 207,
+truncated: false,
+body: '{"idTxn": 10093, "user": "kpyqqysw@empresa.com", "date": "2024-09-08T23:05:14.873Z", "value": 1632873, "paymentMethod": "Efectivo", "hash": "6d6812eae4b46cacdd0806de2246cac2124f442fda326028b10c68a02b4d4708"}'
+}
+POST /api/transactions 201 in 725ms (next.js: 3ms, application-code: 723ms)
+[Appresso] POST /api/transactions received {
+requestId: '67be35ab-a49f-401c-96ce-08e53ac69c99',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '67be35ab-a49f-401c-96ce-08e53ac69c99',
+bodyLength: 209,
+truncated: false,
+body: '{"idTxn": 10143, "user": "twdgl@hotmail.com", "date": "2026-08-27T09:10:04.205Z", "value": 1880802, "paymentMethod": "Transferencia", "hash": "01c9cc59af3cd264477fc5611eb71294e6f4c251979a47ab4a63cf6aa5bd264a"}'
+}
+POST /api/transactions 201 in 840ms (next.js: 1.9ms, application-code: 838ms)
+[Appresso] POST /api/transactions received {
+requestId: '4081be15-62d8-4018-9593-a8f497e38c99',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '4081be15-62d8-4018-9593-a8f497e38c99',
+bodyLength: 187,
+truncated: false,
+body: '{"idTxn": 10064, "user": 95712, "date": "2026-12-16T03:42:19.239Z", "value": 573079, "paymentMethod": "Paypal", "hash": "16a24aa1ea31da0b148b1799b2874834a697e81cc39bdd54f508bece2b5772b1"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '4081be15-62d8-4018-9593-a8f497e38c99',
+bodyType: 'object',
+details: [
+{
+path: 'user',
+code: 'invalid_type',
+message: 'Invalid input: expected string, received number'
+}
+]
+}
+POST /api/transactions 422 in 16ms (next.js: 3ms, application-code: 13ms)
+[Appresso] POST /api/transactions received {
+requestId: '5649d006-fffc-47ae-ab1a-e2f31f38d858',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '5649d006-fffc-47ae-ab1a-e2f31f38d858',
+bodyLength: 211,
+truncated: false,
+body: '{"idTxn": 10052, "user": "wruvvvz@outlook.com", "date": "2023-09-14T16:53:34.430Z", "value": "undefined", "paymentMethod": "Apple Pay", "hash": "69b86732ac6030f83da6b30e065e6a7b856afec4f83ac9bf2bf32062ff33e94e"}'
+}
+[Appresso] POST /api/transactions validation failed {
+requestId: '5649d006-fffc-47ae-ab1a-e2f31f38d858',
+bodyType: 'object',
+details: [
+{
+path: 'value',
+code: 'invalid_type',
+message: 'Invalid input: expected number, received string'
+}
+]
+}
+POST /api/transactions 422 in 20ms (next.js: 4ms, application-code: 16ms)
+[Appresso] POST /api/transactions received {
+requestId: '82c79670-a853-4e96-8d12-73435bec1d81',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '82c79670-a853-4e96-8d12-73435bec1d81',
+bodyLength: 211,
+truncated: false,
+body: '{"idTxn": 10014, "user": "euyfsjmufu@hotmail.com", "date": "2021-05-21T22:21:17.003Z", "value": 1591490, "paymentMethod": "Google Pay", "hash": "e5c11e0c449f744f09e232f709119a6f87d11e5c1987e5b8460b9a36d048abdf"}'
+}
+POST /api/transactions 201 in 1493ms (next.js: 1.9ms, application-code: 1491ms)
+[Appresso] POST /api/transactions received {
+requestId: '77cdffc8-134c-417f-9498-a81ee74e1e59',
+method: 'POST',
+contentType: 'application/json'
+}
+[Appresso] POST /api/transactions raw body captured {
+requestId: '77cdffc8-134c-417f-9498-a81ee74e1e59',
+bodyLength: 206,
+truncated: false,
+body: '{"idTxn": 10050, "user": "wruvvvz@outlook.com", "date": "2023-09-14T16:53:32.430Z", "value": 638733, "paymentMethod": "Apple Pay", "hash": "78aa1749a8d72c9739a43eb05bf328cb9747b7be458c84fc58cb27e1f80397cb"}'
+}
+POST /api/transactions 201 in 891ms (next.js: 2ms, application-code: 889ms)
+[Appresso] POST /api/transactions received {
+requestId: '153f37c7-0fce-465f-9cb0-fcadc7968c89',
+method: 'POST',
+contentType: 'appl

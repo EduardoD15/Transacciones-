@@ -6,14 +6,14 @@ import { z } from "zod";
 
 import { logger } from "@/lib/logger";
 import { listTransactions, registerTransaction } from "@/lib/transaction-service";
-import { isColombiaDateTime } from "@/lib/colombia-date";//validaciones
+import { isValidDateTime } from "@/lib/colombia-date";//validaciones
 
 // Zod para validar estructura y tipos de datos
 const transactionSchema = z.object({
   idTxn: z.union([z.string(), z.number()]).refine((value) => String(value).trim().length > 0),
   user: z.string().trim().min(1),
-  date: z.string().refine(isColombiaDateTime, {
-    message: "Usa fecha y hora de Colombia, con o sin -05:00, o una fecha UTC terminada en Z.",
+  date: z.string().refine(isValidDateTime, {
+    message: "Usa una fecha y hora ISO 8601 válida con Z, offset horario o sin zona.",
   }),
   value: z.number().finite(),
   paymentMethod: z.string(),
@@ -114,7 +114,7 @@ export async function POST(request: Request) {
       processed: false,
       error: "La solicitud no tiene los campos requeridos.",
       details,
-    }, 422);
+    }, 422); 
   }
   //varias transaciones 
   if (Array.isArray(parsedBody.data)) {

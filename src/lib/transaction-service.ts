@@ -304,11 +304,11 @@ export async function registerTransaction(
   input: TransactionInput,
   logContext: TransactionLogContext,
 ) {
+  const hashValid = await runLoggedStep(logContext, "validate transaction HMAC", () =>
+    verifyTransactionHash(input),
+  );
   const transaction = await runLoggedStep(logContext, "normalize transaction", () =>
     normalizeInput(input),
-  );
-  const hashValid = await runLoggedStep(logContext, "validate transaction HMAC", () =>
-    verifyTransactionHash(transaction),
   );
   const windowTransactions = transaction.windowTransactions;
   const supabase = await runLoggedStep(logContext, "create Supabase admin client", () =>
